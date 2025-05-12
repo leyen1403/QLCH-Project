@@ -1,4 +1,4 @@
-﻿using QLCH.BLL;
+using QLCH.BLL;
 using QLCH.BLL.Interfaces;
 using QLCH.BLL.Services;
 using QLCH.DAL.Models;
@@ -44,10 +44,7 @@ namespace QLCH.GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(testConnection())
-                MessageBox.Show("Kết nối thành công");
-            else
-                MessageBox.Show("Kết nối thất bại");
+            
         }
     }
 }
