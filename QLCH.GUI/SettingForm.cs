@@ -129,6 +129,7 @@ namespace QLCH.GUI
                 ConfigurationManager.RefreshSection("connectionStrings");
 
                 MessageBox.Show("Cấu hình kết nối đã được lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -1,4 +1,4 @@
-using QLCH.BLL;
+﻿using QLCH.BLL;
 using QLCH.BLL.Interfaces;
 using QLCH.BLL.Services;
 using QLCH.DAL.Models;
@@ -16,7 +16,7 @@ namespace QLCH.GUI
 {
     public partial class LoginForm : Form
     {
-        private readonly INhaCungCapService _nhaCungCapService;
+        private INhaCungCapService _nhaCungCapService;
         public LoginForm()
         {
             InitializeComponent();
@@ -25,7 +25,8 @@ namespace QLCH.GUI
             {               
                 SettingForm frm = new SettingForm();
                 frm.ShowDialog();
-            }          
+                _nhaCungCapService = new NhaCungCapService();
+            } 
         }
         
         private bool testConnection()
@@ -39,6 +40,14 @@ namespace QLCH.GUI
             {             
                 return false;
             }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(testConnection())
+                MessageBox.Show("Kết nối thành công");
+            else
+                MessageBox.Show("Kết nối thất bại");
         }
     }
 }
