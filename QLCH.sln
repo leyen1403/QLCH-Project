@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLCH.GUI", "QLCH.GUI\QLCH.GUI.csproj", "{0C9203B6-411C-4B19-B1D8-ED2DBA0A14DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLCH.DAL", "QLCH.DAL\QLCH.DAL.csproj", "{CA6A5844-2507-40CE-B13E-566535C63F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLCH.BLL", "QLCH.BLL\QLCH.BLL.csproj", "{A8B5B71F-CA9F-4298-8DBF-C4C8819D22DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C9203B6-411C-4B19-B1D8-ED2DBA0A14DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9203B6-411C-4B19-B1D8-ED2DBA0A14DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9203B6-411C-4B19-B1D8-ED2DBA0A14DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9203B6-411C-4B19-B1D8-ED2DBA0A14DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6A5844-2507-40CE-B13E-566535C63F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6A5844-2507-40CE-B13E-566535C63F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6A5844-2507-40CE-B13E-566535C63F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6A5844-2507-40CE-B13E-566535C63F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B5B71F-CA9F-4298-8DBF-C4C8819D22DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B5B71F-CA9F-4298-8DBF-C4C8819D22DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B5B71F-CA9F-4298-8DBF-C4C8819D22DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B5B71F-CA9F-4298-8DBF-C4C8819D22DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A0C4A1B-6FBC-4038-A9F2-95E3ADACD046}
+	EndGlobalSection
+EndGlobal
