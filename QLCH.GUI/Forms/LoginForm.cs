@@ -33,7 +33,10 @@ namespace QLCH.GUI
         {
             try
             {
-                var list = _nhaCungCapService.GetAllNhaCungCap();
+                //var list = _nhaCungCapService.GetAllNhaCungCap();
+                //return true;
+                IKhachHangService _khachHangService = new KhachHangService();
+                var list = _khachHangService.GetAll();
                 return true;
             }
             catch (Exception ex)

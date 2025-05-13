@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Repositorys\KhachHangRepository.cs" />
     <Compile Include="Repositorys\ManHinhRepository.cs" />
     <Compile Include="Models\ManHinh.cs" />
     <Compile Include="Models\NhaCungCap.cs" />

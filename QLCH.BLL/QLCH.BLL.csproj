@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IKhachHangService.cs" />
     <Compile Include="Interfaces\IManHinhService.cs" />
     <Compile Include="Interfaces\INhaCungCapService.cs" />
+    <Compile Include="Services\KhachHangService.cs" />
     <Compile Include="Services\ManHinhService.cs" />
     <Compile Include="Services\NhaCungCapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

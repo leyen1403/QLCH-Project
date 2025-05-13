@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +24,25 @@ namespace QLCH.DAL.Models
         public int SoLanGheTham { get; set; }
         public int SoLanMuaHang { get; set; }
         public string GhiChu { get; set; }
+
+        public KhachHang()
+        {
+            MaKH = string.Empty;
+            TenKH = string.Empty;
+            DiaChi = string.Empty;
+            SDT = string.Empty;
+            Email = string.Empty;
+            ThoiGianTao = DateTime.Now;
+            ThoiGianCapNhat = DateTime.Now;
+            TrangThai = true;
+            DiemTichLuy = 0;
+            TongChiTieu = 0;
+            LoaiKhachHang = false; // Mặc định là khách hàng thường
+            PhanTramGiamGia = 0;
+            CongNo = 0;
+            SoLanGheTham = 0;
+            SoLanMuaHang = 0;
+            GhiChu = string.Empty;
+        }
     }
 }
