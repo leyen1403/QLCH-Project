@@ -13,7 +13,10 @@ namespace QLCH.DAL.Repositorys
 
         public TaiKhoanManHinhRepository()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["MyAppConnectionString"].ConnectionString;
+            if (!GlobalVariables.IsTestMode)
+                _connectionString = ConfigurationManager.ConnectionStrings["MyAppConnectionString"].ConnectionString;
+            else
+                _connectionString = GlobalVariables.ConnectionString;
         }
 
         // 🔹 Thêm mới tài khoản - màn hình

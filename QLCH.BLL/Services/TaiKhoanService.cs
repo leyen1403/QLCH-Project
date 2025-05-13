@@ -125,5 +125,32 @@ namespace QLCH.BLL.Services
                 throw new ArgumentException(string.Join("\n", errors));
             }
         }
+        
+        public TaiKhoan Login(string username, string password)
+        {
+            // Kiểm tra thông tin đầu vào
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("Tên đăng nhập và mật khẩu không được để trống.");
+            }
+
+            // Gọi đến Repository để lấy thông tin tài khoản
+            var taiKhoan = _taiKhoanRepository.GetByUsername(username);
+
+            // Kiểm tra sự tồn tại của tài khoản
+            if (taiKhoan == null)
+            {
+                throw new KeyNotFoundException($"Không tìm thấy tài khoản với tên đăng nhập: {username}");
+            }
+
+            // Kiểm tra mật khẩu
+            if (taiKhoan.MatKhau != password)
+            {
+                throw new UnauthorizedAccessException("Mật khẩu không chính xác.");
+            }
+
+            // Nếu đúng, trả về thông tin tài khoản
+            return taiKhoan;
+        }
     }
 }

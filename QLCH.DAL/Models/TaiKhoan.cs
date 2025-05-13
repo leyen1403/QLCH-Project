@@ -15,5 +15,6 @@ namespace QLCH.DAL.Models
         public DateTime ThoiGianTao { get; set; }
         public DateTime ThoiGianCapNhat { get; set; }
         public bool TrangThai { get; set; }
+        public TaiKhoan() { }
     }
 }

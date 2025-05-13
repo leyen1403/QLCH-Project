@@ -17,7 +17,7 @@ namespace QLCH.DAL.Repositorys
         {
             // Nếu là chế độ test thì dùng connection string trong app.config
             // Nếu không thì dùng connection string trong GlobalVariables
-            if (GlobalVariables.IsTestMode)
+            if (!GlobalVariables.IsTestMode)
             {
                 _connectionString = ConfigurationManager.ConnectionStrings["TestConnectionString"].ConnectionString;
             }
@@ -44,6 +44,7 @@ namespace QLCH.DAL.Repositorys
                     AddParameters(command, nhanVien);
                     connection.Open();
                     command.ExecuteNonQuery();
+                    Console.WriteLine("Thêm nhân viên thành công!");
                 }
             }
         }
@@ -159,6 +160,19 @@ namespace QLCH.DAL.Repositorys
                 ChucVu = reader["ChucVu"].ToString(),
                 MucLuong = Convert.ToDecimal(reader["MucLuong"])
             };
+        }
+
+        public string GetLastNV()
+        {
+            using(SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT TOP 1 MaNV FROM NhanVien ORDER BY MaNV DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                var result = command.ExecuteScalar();
+                Console.WriteLine(result != null ? "Lấy mã nhân viên cuối cùng thành công!" : "Không tìm thấy mã nhân viên.");
+                return result != null ? result.ToString() : null;
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
-using QLCH.BLL;
+﻿using QLCH.BLL;
 using QLCH.BLL.Interfaces;
 using QLCH.BLL.Services;
 using QLCH.DAL.Models;
+using QLCH.GUI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,11 @@ namespace QLCH.GUI
     public partial class LoginForm : Form
     {
         private readonly IManHinhService _manHinhService;
+        private readonly ITaiKhoan _taiKhoan;
         public LoginForm()
         {
             InitializeComponent();
+            _taiKhoan = new TaiKhoanService();
             _manHinhService = new ManHinhService();
             if (!testConnection())
             {               
@@ -44,7 +47,20 @@ namespace QLCH.GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                string username = txtUsername.Text;
+                string password = txtPassword.Text;
+                var taiKhoan = _taiKhoan.Login(username, password);
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi: "+ ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

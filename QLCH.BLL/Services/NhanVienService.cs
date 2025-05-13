@@ -12,12 +12,22 @@ namespace QLCH.BLL.Services
     public class NhanVienService : INhanVienService
     {
         private readonly NhanVienRepository _nhanVienRepository;
+        private readonly TaiKhoanRepository _taiKhoanRepository;
+        private readonly TaiKhoanManHinhRepository _taiKhoanManHinhRepository;
+
         public NhanVienService()
         {
             _nhanVienRepository = new NhanVienRepository();
+            _taiKhoanRepository = new TaiKhoanRepository();
+            _taiKhoanManHinhRepository = new TaiKhoanManHinhRepository();
         }
         public void Add(NhanVien nhanVien)
         {
+            // Sinh mã nhân viên tự động
+            string maNV = AutomaticGenerateMaNV();
+            nhanVien.MaNV = maNV;
+
+            // 2Validate thông tin
             ValidateNhanVien(nhanVien);
 
             // Thiết lập thông tin mặc định
@@ -25,8 +35,50 @@ namespace QLCH.BLL.Services
             nhanVien.ThoiGianCapNhat = DateTime.Now;
             nhanVien.TrangThai = true;
 
-            // Gọi đến Repository để thêm vào database
+            // 4Thêm vào database
             _nhanVienRepository.Add(nhanVien);
+
+            // 5Tạo tài khoản cho nhân viên
+            TaiKhoan taiKhoan = new TaiKhoan
+            {
+                MaTK = "TK_" + maNV,
+                MaNV = maNV,
+                TenDangNhap = nhanVien.SDT,
+                MatKhau = nhanVien.SDT, // Mật khẩu mặc định là số điện thoại
+                ThoiGianTao = DateTime.Now,
+                ThoiGianCapNhat = DateTime.Now,
+                TrangThai = true
+            };
+            _taiKhoanRepository.Add(taiKhoan);         
+
+            Console.WriteLine("Thêm nhân viên và tài khoản thành công!");
+        }
+
+        private string AutomaticGenerateMaNV()
+        {
+            // Lấy mã cuối cùng từ database
+            string lastMaNV = _nhanVienRepository.GetLastNV();
+
+            // Nếu chưa có khách hàng nào, bắt đầu từ NV0001
+            if (string.IsNullOrEmpty(lastMaNV))
+            {
+                return "NV0001";
+            }
+
+            // Tách phần số từ "NV0001" => "0001"
+            string numberPart = lastMaNV.Substring(2);
+
+            // Thử chuyển đổi thành số, nếu thất bại thì trả về NV00001
+            if (int.TryParse(numberPart, out int lastNumber))
+            {
+                int newNumber = lastNumber + 1;
+                return "NV" + newNumber.ToString("D4");
+            }
+            else
+            {
+                // Nếu lỗi format, quay lại mã mặc định
+                return "NV000001";
+            }
         }
 
         public void Delete(string maNV)

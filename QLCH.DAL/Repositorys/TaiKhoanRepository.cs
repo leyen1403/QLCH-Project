@@ -13,9 +13,9 @@ namespace QLCH.DAL.Repositorys
 
         public TaiKhoanRepository()
         {
-            if (GlobalVariables.IsTestMode)
+            if (!GlobalVariables.IsTestMode)
             {
-                _connectionString = ConfigurationManager.ConnectionStrings["TestConnectionString"].ConnectionString;
+                _connectionString = ConfigurationManager.ConnectionStrings["MyAppConnectionString"].ConnectionString;
             }
             else
             {
@@ -152,6 +152,36 @@ namespace QLCH.DAL.Repositorys
                 ThoiGianCapNhat = Convert.ToDateTime(reader["ThoiGianCapNhat"]),
                 TrangThai = Convert.ToBoolean(reader["TrangThai"])
             };
+        }
+
+        public TaiKhoan GetByUsername(string username)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar).Value = username;
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new TaiKhoan
+                            {
+                                MaTK = reader["MaTK"].ToString(),
+                                MaNV = reader["MaNV"].ToString(),
+                                TenDangNhap = reader["TenDangNhap"].ToString(),
+                                MatKhau = reader["MatKhau"].ToString(),
+                                ThoiGianTao = Convert.ToDateTime(reader["ThoiGianTao"]),
+                                ThoiGianCapNhat = Convert.ToDateTime(reader["ThoiGianCapNhat"]),
+                                TrangThai = Convert.ToBoolean(reader["TrangThai"])
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
         }
     }
 }

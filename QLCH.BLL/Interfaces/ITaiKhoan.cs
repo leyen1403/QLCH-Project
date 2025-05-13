@@ -14,5 +14,6 @@ namespace QLCH.BLL.Interfaces
         void Delete(string maTK);
         TaiKhoan GetByID(string maTK);
         List<TaiKhoan> GetAll();
+        TaiKhoan Login(string username, string password);
     }
 }
