@@ -16,16 +16,16 @@ namespace QLCH.GUI
 {
     public partial class LoginForm : Form
     {
-        private INhaCungCapService _nhaCungCapService;
+        private readonly IManHinhService _manHinhService;
         public LoginForm()
         {
             InitializeComponent();
-            _nhaCungCapService = new NhaCungCapService();
+            _manHinhService = new ManHinhService();
             if (!testConnection())
             {               
                 SettingForm frm = new SettingForm();
                 frm.ShowDialog();
-                _nhaCungCapService = new NhaCungCapService();
+                _manHinhService = new ManHinhService();
             } 
         }
         
@@ -33,10 +33,7 @@ namespace QLCH.GUI
         {
             try
             {
-                //var list = _nhaCungCapService.GetAllNhaCungCap();
-                //return true;
-                IKhachHangService _khachHangService = new KhachHangService();
-                var list = _khachHangService.GetAll();
+                var item = _manHinhService.GetAll();
                 return true;
             }
             catch (Exception ex)

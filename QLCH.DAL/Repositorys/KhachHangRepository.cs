@@ -15,13 +15,13 @@ namespace QLCH.DAL.Repositorys
         private readonly string _connectionString;
         public KhachHangRepository()
         {
-            try
-            {
-                _connectionString = ConfigurationManager.ConnectionStrings["MyAppConnectionString"].ConnectionString;
-            }
-            catch
+            if (GlobalVariables.IsTestMode)
             {
                 _connectionString = GlobalVariables.ConnectionString;
+            }
+            else
+            {
+                _connectionString = ConfigurationManager.ConnectionStrings["MyAppConnectionString"].ConnectionString;
             }
 
         }
@@ -94,6 +94,10 @@ namespace QLCH.DAL.Repositorys
                         GhiChu = reader["GhiChu"].ToString()
                     };
                     Console.WriteLine("Lấy thông tin khách hàng thành công!");
+                }
+                else
+                {
+                    Console.WriteLine("Không tìm thấy khách hàng với mã: " + MaKH);
                 }
             }
             return khachHang;
