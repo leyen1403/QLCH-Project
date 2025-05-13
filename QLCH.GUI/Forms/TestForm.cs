@@ -1,6 +1,7 @@
 using QLCH.BLL;
 using QLCH.BLL.Interfaces;
 using QLCH.BLL.Services;
+using QLCH.GUI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,9 @@ namespace QLCH.GUI.Forms
 {
     public partial class TestForm : Form
     {
-        private readonly IManHinhService _manHinhService;
         public TestForm()
         {
             InitializeComponent();
-            _manHinhService = new ManHinhService();
-            userDataGridView1.DataSource = _manHinhService.GetAll();
         }
     }
 }
