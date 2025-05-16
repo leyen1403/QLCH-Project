@@ -34,6 +34,8 @@ namespace QLCH.GUI
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.cbxRemember = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -99,6 +101,30 @@ namespace QLCH.GUI
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // btnSetting
+            // 
+            this.btnSetting.AutoSize = true;
+            this.btnSetting.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.Location = new System.Drawing.Point(504, 12);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(75, 33);
+            this.btnSetting.TabIndex = 6;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.AutoSize = true;
+            this.btnExit.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(585, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 33);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
@@ -106,6 +132,8 @@ namespace QLCH.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(672, 443);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.cbxRemember);
             this.Controls.Add(this.txtPassword);
@@ -116,6 +144,7 @@ namespace QLCH.GUI
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +158,7 @@ namespace QLCH.GUI
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.CheckBox cbxRemember;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.Button btnExit;
     }
 }

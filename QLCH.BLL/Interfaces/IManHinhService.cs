@@ -12,5 +12,7 @@ namespace QLCH.BLL.Interfaces
         List<ManHinh> GetAll();
         ManHinh GetById(string maMH);
         bool Add(ManHinh manHinh);
+        bool Update(ManHinh manHinh);
+        bool Delete(string maMH);
     }
 }

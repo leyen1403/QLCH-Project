@@ -27,7 +27,7 @@ namespace QLCH.BLL.Services
             string maNV = AutomaticGenerateMaNV();
             nhanVien.MaNV = maNV;
 
-            // 2Validate thông tin
+            // Validate thông tin
             ValidateNhanVien(nhanVien);
 
             // Thiết lập thông tin mặc định
@@ -35,10 +35,10 @@ namespace QLCH.BLL.Services
             nhanVien.ThoiGianCapNhat = DateTime.Now;
             nhanVien.TrangThai = true;
 
-            // 4Thêm vào database
+            // Thêm vào database
             _nhanVienRepository.Add(nhanVien);
 
-            // 5Tạo tài khoản cho nhân viên
+            // Tạo tài khoản cho nhân viên
             TaiKhoan taiKhoan = new TaiKhoan
             {
                 MaTK = "TK_" + maNV,

@@ -12,12 +12,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace QLCH.GUI
 {
     public partial class SettingForm : Form
     {
         private readonly INhaCungCapService _nhaCungCapService;
+        public bool IsConfigured { get; set; } = false;
         public SettingForm()
         {
             InitializeComponent();
@@ -129,6 +131,11 @@ namespace QLCH.GUI
                 ConfigurationManager.RefreshSection("connectionStrings");
 
                 MessageBox.Show("Cấu hình kết nối đã được lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                // Đánh dấu là cấu hình thành công
+                IsConfigured = true;
+
+                // Thoát khỏi ShowDialog
                 this.Close();
             }
             catch (Exception ex)
@@ -145,12 +152,12 @@ namespace QLCH.GUI
                 return;
             }
 
-            // 🔹 Lấy thông tin từ ComboBox
+            // Lấy thông tin từ ComboBox
             string server = cmbServers.SelectedItem.ToString();
             string database = cmbDatabaseName.SelectedItem.ToString();
             string connectionString = $"Data Source={server};Initial Catalog={database};Integrated Security=True;TrustServerCertificate=True";
 
-            // 🔹 Câu lệnh SQL
+            // Câu lệnh SQL
             string sql = "SELECT * FROM NhaCungCap";
 
             try
