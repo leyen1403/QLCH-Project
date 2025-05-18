@@ -41,19 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IKhachHangService.cs" />
-    <Compile Include="Interfaces\IManHinhService.cs" />
-    <Compile Include="Interfaces\INhaCungCapService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
-    <Compile Include="Interfaces\ITaiKhoan.cs" />
-    <Compile Include="Interfaces\ITaiKhoanManHinh.cs" />
-    <Compile Include="Services\KhachHangService.cs" />
-    <Compile Include="Services\ManHinhService.cs" />
-    <Compile Include="Services\NhaCungCapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NhanVienService.cs" />
-    <Compile Include="Services\TaiKhoanManHinhService.cs" />
-    <Compile Include="Services\TaiKhoanService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QLCH.DAL\QLCH.DAL.csproj">
@@ -61,5 +51,6 @@
       <Name>QLCH.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

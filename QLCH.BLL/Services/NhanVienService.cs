@@ -12,168 +12,157 @@ namespace QLCH.BLL.Services
     public class NhanVienService : INhanVienService
     {
         private readonly NhanVienRepository _nhanVienRepository;
-        private readonly TaiKhoanRepository _taiKhoanRepository;
-        private readonly TaiKhoanManHinhRepository _taiKhoanManHinhRepository;
 
         public NhanVienService()
         {
             _nhanVienRepository = new NhanVienRepository();
-            _taiKhoanRepository = new TaiKhoanRepository();
-            _taiKhoanManHinhRepository = new TaiKhoanManHinhRepository();
-        }
-        public void Add(NhanVien nhanVien)
-        {
-            // Sinh mã nhân viên tự động
-            string maNV = AutomaticGenerateMaNV();
-            nhanVien.MaNV = maNV;
-
-            // Validate thông tin
-            ValidateNhanVien(nhanVien);
-
-            // Thiết lập thông tin mặc định
-            nhanVien.ThoiGianTao = DateTime.Now;
-            nhanVien.ThoiGianCapNhat = DateTime.Now;
-            nhanVien.TrangThai = true;
-
-            // Thêm vào database
-            _nhanVienRepository.Add(nhanVien);
-
-            // Tạo tài khoản cho nhân viên
-            TaiKhoan taiKhoan = new TaiKhoan
-            {
-                MaTK = "TK_" + maNV,
-                MaNV = maNV,
-                TenDangNhap = nhanVien.SDT,
-                MatKhau = nhanVien.SDT, // Mật khẩu mặc định là số điện thoại
-                ThoiGianTao = DateTime.Now,
-                ThoiGianCapNhat = DateTime.Now,
-                TrangThai = true
-            };
-            _taiKhoanRepository.Add(taiKhoan);         
-
-            Console.WriteLine("Thêm nhân viên và tài khoản thành công!");
         }
 
-        private string AutomaticGenerateMaNV()
+        public List<NhanVien> GetAllNhanViens()
         {
-            // Lấy mã cuối cùng từ database
-            string lastMaNV = _nhanVienRepository.GetLastNV();
-
-            // Nếu chưa có khách hàng nào, bắt đầu từ NV0001
-            if (string.IsNullOrEmpty(lastMaNV))
+            if (_nhanVienRepository.GetAll().Count <= 0)
             {
-                return "NV0001";
+                throw new Exception("Không có nhân viên nào trong hệ thống");
             }
+            return _nhanVienRepository.GetAll();
+        }
 
-            // Tách phần số từ "NV0001" => "0001"
-            string numberPart = lastMaNV.Substring(2);
-
-            // Thử chuyển đổi thành số, nếu thất bại thì trả về NV00001
-            if (int.TryParse(numberPart, out int lastNumber))
+        public NhanVien GetNhanVienById(string id)
+        {
+            if (_nhanVienRepository.GetById(id) == null)
             {
-                int newNumber = lastNumber + 1;
-                return "NV" + newNumber.ToString("D4");
+                throw new Exception("Nhân viên không tồn tại");
             }
-            else
+            return _nhanVienRepository.GetById(id);
+        }
+
+        public bool AddNhanVien(NhanVien nhanVien)
+        {
+            try
             {
-                // Nếu lỗi format, quay lại mã mặc định
-                return "NV000001";
+                string maNV = automaticGenerateMaNV();
+                _nhanVienRepository.Add(nhanVien);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi thêm nhân viên: {ex.Message}");
+                return false;
             }
         }
 
-        public void Delete(string maNV)
+        private string automaticGenerateMaNV()
         {
-            if (string.IsNullOrEmpty(maNV))
+            try
             {
-                Console.WriteLine("Mã nhân viên không được để trống");
-                throw new ArgumentException("Mã nhân viên không được để trống");
+                string maNV = _nhanVienRepository.GetLastNhanVien().MaNV;
+                if (maNV == null)
+                {
+                    return "NV0001";
+                }
+                else
+                {
+                    int maSo = int.Parse(maNV.Substring(2)) + 1;
+                    return "NV" + maSo.ToString("D4");
+                }
             }
-
-            var nhanVien = _nhanVienRepository.GetByID(maNV);
-
-            if (nhanVien == null)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Không tìm thấy nhân viên với mã: {maNV}");
-                throw new KeyNotFoundException($"Không tìm thấy nhân viên với mã: {maNV}");
+                throw new Exception($"Lỗi khi tự động tạo mã nhân viên: {ex.Message}");
             }
-
-            _nhanVienRepository.Delete(maNV);
         }
 
-        public List<NhanVien> GetAll()
+        public bool UpdateNhanVien(NhanVien nhanVien)
         {
-            var nhanViens = _nhanVienRepository.GetAll();
-            return nhanViens ?? new List<NhanVien>();
+            try
+            {
+                ValidateNhanVien(nhanVien);
+                var existingNhanVien = GetNhanVienById(nhanVien.MaNV);
+                if(existingNhanVien == null)
+                {
+                    throw new Exception("Nhân viên không tồn tại");
+                }
+                nhanVien.UpdatedAt = DateTime.Now;
+                _nhanVienRepository.Update(nhanVien);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi cập nhật nhân viên: {ex.Message}");
+                return false;
+            }
         }
 
-        public NhanVien GetByID(string maNV)
+        public bool DeleteNhanVien(string id)
         {
-            if (string.IsNullOrEmpty(maNV))
+            try
             {
-                Console.WriteLine("Mã nhân viên không được để trống");
-                throw new ArgumentException("Mã nhân viên không được để trống");
+                _nhanVienRepository.Delete(id);
+                return true;
             }
-
-            var nhanVien = _nhanVienRepository.GetByID(maNV);
-
-            if (nhanVien == null)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Không tìm thấy nhân viên với mã: {maNV}");
-                throw new KeyNotFoundException($"Không tìm thấy nhân viên với mã: {maNV}");
+                Console.WriteLine($"Lỗi khi xóa nhân viên: {ex.Message}");
+                return false;
             }
-
-            return nhanVien;
         }
 
-        public void Update(NhanVien nhanVien)
+        private void ValidateNhanVien(NhanVien nv)
         {
-            ValidateNhanVien(nhanVien);
-
-            // Kiểm tra sự tồn tại của nhân viên
-            var existingNhanVien = _nhanVienRepository.GetByID(nhanVien.MaNV);
-            if (existingNhanVien == null)
+            if (nv == null)
             {
-                Console.WriteLine($"Không tìm thấy nhân viên với mã: {nhanVien.MaNV}");
-                throw new KeyNotFoundException($"Không tìm thấy nhân viên với mã: {nhanVien.MaNV}");
+                throw new Exception("Đối tượng nhân viên không được null");
             }
-
-            // Cập nhật thời gian
-            nhanVien.ThoiGianCapNhat = DateTime.Now;
-
-            // Thực hiện cập nhật
-            _nhanVienRepository.Update(nhanVien);
-        }
-        // Kiểm tra thông tin nhân viên
-        private void ValidateNhanVien(NhanVien nhanVien)
-        {
-            if (nhanVien == null)
-                throw new ArgumentNullException(nameof(nhanVien), "Đối tượng nhân viên không được null");
 
             var errors = new List<string>();
 
-            if (string.IsNullOrEmpty(nhanVien.MaNV))
-                errors.Add("Mã nhân viên không được để trống");
+            var requiredStrings = new Dictionary<string, string>
+            {
+                { "MaNV", nv.MaNV },
+                { "HoTen", nv.HoTen },
+                { "CMND_CCCD", nv.CMND_CCCD },
+                { "SoDienThoai", nv.SoDienThoai },
+                { "Email", nv.Email },
+                { "LoaiHopDong", nv.LoaiHopDong },
+                { "TrangThai", nv.TrangThai }
+            };
 
-            if (string.IsNullOrEmpty(nhanVien.TenNV))
-                errors.Add("Tên nhân viên không được để trống");
+            foreach (var item in requiredStrings)
+            {
+                if (string.IsNullOrEmpty(item.Value))
+                {
+                    errors.Add($"{item.Key} không được để trống");
+                }
+            }
 
-            if (string.IsNullOrEmpty(nhanVien.SDT))
-                errors.Add("Số điện thoại không được để trống");
+            if (nv.MaChucVu <= 0)
+            {
+                errors.Add("Mã chức vụ không hợp lệ");
+            }
+            if (nv.MaPhongBan <= 0)
+            {
+                errors.Add("Mã phòng ban không hợp lệ");
+            }
+            if (nv.MaCuaHang <= 0)
+            {
+                errors.Add("Mã cửa hàng không hợp lệ");
+            }
 
-            if (string.IsNullOrEmpty(nhanVien.Email))
-                errors.Add("Email không được để trống");
+            if (nv.NgayVaoLam == DateTime.MinValue)
+            {
+                errors.Add("Ngày vào làm không được để trống");
+            }
 
-            if (string.IsNullOrEmpty(nhanVien.ChucVu))
-                errors.Add("Chức vụ không được để trống");
-
-            if (nhanVien.MucLuong < 0)
-                errors.Add("Mức lương không được âm");
+            if (nv.NgaySinh == DateTime.MinValue)
+            {
+                errors.Add("Ngày sinh không được để trống");
+            }
 
             if (errors.Count > 0)
             {
-                Console.WriteLine(string.Join("\n", errors));
-                throw new ArgumentException(string.Join("\n", errors));
+                throw new Exception(string.Join("\n", errors));
             }
         }
+
     }
 }

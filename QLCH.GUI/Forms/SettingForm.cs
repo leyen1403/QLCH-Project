@@ -1,4 +1,4 @@
-﻿using QLCH.BLL;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +18,10 @@ namespace QLCH.GUI
 {
     public partial class SettingForm : Form
     {
-        private readonly INhaCungCapService _nhaCungCapService;
         public bool IsConfigured { get; set; } = false;
         public SettingForm()
         {
             InitializeComponent();
-            _nhaCungCapService = new NhaCungCapService();
             LoadServers();
         }
         //Data Source=DESKTOP-UOPCAO3\HJSV;Initial Catalog=QLCH;Integrated Security=True;Trust Server Certificate=True
@@ -158,7 +156,7 @@ namespace QLCH.GUI
             string connectionString = $"Data Source={server};Initial Catalog={database};Integrated Security=True;TrustServerCertificate=True";
 
             // Câu lệnh SQL
-            string sql = "SELECT * FROM NhaCungCap";
+            string sql = "SELECT * FROM NhanVien";
 
             try
             {
