@@ -3,9 +3,6 @@ using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLCH.BLL.Services
 {
@@ -20,28 +17,38 @@ namespace QLCH.BLL.Services
 
         public List<NhanVien> GetAllNhanViens()
         {
-            if (_nhanVienRepository.GetAll().Count <= 0)
+            var danhSachNhanVien = _nhanVienRepository.GetAll();
+            if (danhSachNhanVien == null || danhSachNhanVien.Count == 0)
             {
                 throw new Exception("Không có nhân viên nào trong hệ thống");
             }
-            return _nhanVienRepository.GetAll();
+            return danhSachNhanVien;
         }
 
         public NhanVien GetNhanVienById(string id)
         {
-            if (_nhanVienRepository.GetById(id) == null)
+            var nhanVien = _nhanVienRepository.GetById(id);
+            if (nhanVien == null)
             {
                 throw new Exception("Nhân viên không tồn tại");
             }
-            return _nhanVienRepository.GetById(id);
+            return nhanVien;
         }
 
         public bool AddNhanVien(NhanVien nhanVien)
         {
             try
             {
-                string maNV = automaticGenerateMaNV();
+                // Validate thông tin nhân viên
+                ValidateNhanVien(nhanVien);
+
+                // Tạo mã nhân viên tự động
+                nhanVien.MaNV = automaticGenerateMaNV();
+                nhanVien.CreatedAt = DateTime.Now;
+
+                // Thực hiện thêm vào CSDL
                 _nhanVienRepository.Add(nhanVien);
+                Console.WriteLine("Thêm nhân viên thành công");
                 return true;
             }
             catch (Exception ex)
@@ -51,39 +58,25 @@ namespace QLCH.BLL.Services
             }
         }
 
-        private string automaticGenerateMaNV()
-        {
-            try
-            {
-                string maNV = _nhanVienRepository.GetLastNhanVien().MaNV;
-                if (maNV == null)
-                {
-                    return "NV0001";
-                }
-                else
-                {
-                    int maSo = int.Parse(maNV.Substring(2)) + 1;
-                    return "NV" + maSo.ToString("D4");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Lỗi khi tự động tạo mã nhân viên: {ex.Message}");
-            }
-        }
-
         public bool UpdateNhanVien(NhanVien nhanVien)
         {
             try
             {
+                // Validate thông tin nhân viên
                 ValidateNhanVien(nhanVien);
-                var existingNhanVien = GetNhanVienById(nhanVien.MaNV);
-                if(existingNhanVien == null)
+
+                // Kiểm tra tồn tại
+                var existingNhanVien = _nhanVienRepository.GetById(nhanVien.MaNV);
+                if (existingNhanVien == null)
                 {
                     throw new Exception("Nhân viên không tồn tại");
                 }
+
+                // Cập nhật thông tin
                 nhanVien.UpdatedAt = DateTime.Now;
                 _nhanVienRepository.Update(nhanVien);
+
+                Console.WriteLine("Cập nhật thông tin nhân viên thành công");
                 return true;
             }
             catch (Exception ex)
@@ -97,13 +90,41 @@ namespace QLCH.BLL.Services
         {
             try
             {
+                // Kiểm tra tồn tại
+                var existingNhanVien = _nhanVienRepository.GetById(id);
+                if (existingNhanVien == null)
+                {
+                    throw new Exception("Nhân viên không tồn tại");
+                }
+
+                // Thực hiện xóa
                 _nhanVienRepository.Delete(id);
+                Console.WriteLine("Xóa nhân viên thành công");
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi xóa nhân viên: {ex.Message}");
                 return false;
+            }
+        }
+
+        private string automaticGenerateMaNV()
+        {
+            try
+            {
+                string lastMaNV = _nhanVienRepository.GetLastNhanVien()?.MaNV;
+                if (string.IsNullOrEmpty(lastMaNV))
+                {
+                    return "NV0001";
+                }
+
+                int maSo = int.Parse(lastMaNV.Substring(2)) + 1;
+                return "NV" + maSo.ToString("D4");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi tự động tạo mã nhân viên: {ex.Message}");
             }
         }
 
@@ -118,7 +139,6 @@ namespace QLCH.BLL.Services
 
             var requiredStrings = new Dictionary<string, string>
             {
-                { "MaNV", nv.MaNV },
                 { "HoTen", nv.HoTen },
                 { "CMND_CCCD", nv.CMND_CCCD },
                 { "SoDienThoai", nv.SoDienThoai },
@@ -135,34 +155,17 @@ namespace QLCH.BLL.Services
                 }
             }
 
-            if (nv.MaChucVu <= 0)
-            {
-                errors.Add("Mã chức vụ không hợp lệ");
-            }
-            if (nv.MaPhongBan <= 0)
-            {
-                errors.Add("Mã phòng ban không hợp lệ");
-            }
-            if (nv.MaCuaHang <= 0)
-            {
-                errors.Add("Mã cửa hàng không hợp lệ");
-            }
+            if (nv.MaChucVu <= 0) errors.Add("Mã chức vụ không hợp lệ");
+            if (nv.MaPhongBan <= 0) errors.Add("Mã phòng ban không hợp lệ");
+            if (nv.MaCuaHang <= 0) errors.Add("Mã cửa hàng không hợp lệ");
 
-            if (nv.NgayVaoLam == DateTime.MinValue)
-            {
-                errors.Add("Ngày vào làm không được để trống");
-            }
-
-            if (nv.NgaySinh == DateTime.MinValue)
-            {
-                errors.Add("Ngày sinh không được để trống");
-            }
+            if (nv.NgayVaoLam == DateTime.MinValue) errors.Add("Ngày vào làm không được để trống");
+            if (nv.NgaySinh == DateTime.MinValue) errors.Add("Ngày sinh không được để trống");
 
             if (errors.Count > 0)
             {
                 throw new Exception(string.Join("\n", errors));
             }
         }
-
     }
 }

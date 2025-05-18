@@ -1,4 +1,6 @@
-﻿using QLCH.GUI.Forms;
+﻿using QLCH.BLL.Interfaces;
+using QLCH.BLL.Services;
+using QLCH.GUI.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,19 +16,23 @@ namespace QLCH.GUI
 {
     public partial class LoginForm : Form
     {
+        INhanVienService _nhanVienService;
         public LoginForm()
         {
-            InitializeComponent();        
+            InitializeComponent();
+            _nhanVienService = new NhanVienService();
         }
         
         private bool testConnection()
         {
             try
             {
+                _nhanVienService.GetAllNhanViens();
                 return true;
             }
             catch (Exception ex)
-            {             
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -53,7 +59,7 @@ namespace QLCH.GUI
                 SettingForm frm = new SettingForm();
                 frm.ShowDialog();
 
-                // 🔹 Nếu cấu hình thành công, thử kết nối lại
+                // Nếu cấu hình thành công, thử kết nối lại
                 if (frm.IsConfigured)
                 {
                     if (testConnection())
