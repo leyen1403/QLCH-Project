@@ -50,8 +50,10 @@
     <Compile Include="Interfaces\IHopDongLaoDongService.cs" />
     <Compile Include="Interfaces\ILichSuDieuChuyenService.cs" />
     <Compile Include="Interfaces\ILichSuThangChucService.cs" />
+    <Compile Include="Interfaces\IManHinhService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Interfaces\IPhongBanService.cs" />
+    <Compile Include="Interfaces\ITinhLuongService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaoHiemService.cs" />
     <Compile Include="Services\CaLamViecService.cs" />
@@ -62,8 +64,10 @@
     <Compile Include="Services\HopDongLaoDongService.cs" />
     <Compile Include="Services\LichSuDieuChuyenService.cs" />
     <Compile Include="Services\LichSuThangChucService.cs" />
+    <Compile Include="Services\ManHinhService.cs" />
     <Compile Include="Services\NhanVienService.cs" />
     <Compile Include="Services\PhongBanService.cs" />
+    <Compile Include="Services\TinhLuongService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QLCH.DAL\QLCH.DAL.csproj">
