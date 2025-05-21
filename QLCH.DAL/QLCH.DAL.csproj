@@ -47,6 +47,7 @@
     <Compile Include="Models\BienTheSanPham.cs" />
     <Compile Include="Models\CaLamViec.cs" />
     <Compile Include="Models\ChamCong.cs" />
+    <Compile Include="Models\ChiTietKho.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\CuaHang.cs" />
     <Compile Include="Models\DangKyCa.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Repositorys\BienTheSanPhamRepository.cs" />
     <Compile Include="Repositorys\CaLamViecRepository.cs" />
     <Compile Include="Repositorys\ChamCongRepository.cs" />
+    <Compile Include="Repositorys\ChiTietKhoRepository.cs" />
     <Compile Include="Repositorys\ChucVuRepository.cs" />
     <Compile Include="Repositorys\CuaHangRepository.cs" />
     <Compile Include="Repositorys\DangKyCaRepository.cs" />
