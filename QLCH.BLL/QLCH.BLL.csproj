@@ -45,6 +45,7 @@
     <Compile Include="Interfaces\IBienTheSanPhamService.cs" />
     <Compile Include="Interfaces\ICaLamViecService.cs" />
     <Compile Include="Interfaces\IChamCongService.cs" />
+    <Compile Include="Interfaces\IChiTietDonHangService.cs" />
     <Compile Include="Interfaces\IChiTietKhoService.cs" />
     <Compile Include="Interfaces\IChiTietPhieuNhapService.cs" />
     <Compile Include="Interfaces\IChucVuService.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Services\BienTheSanPhamService.cs" />
     <Compile Include="Services\CaLamViecService.cs" />
     <Compile Include="Services\ChamCongService.cs" />
+    <Compile Include="Services\ChiTietDonHangService.cs" />
     <Compile Include="Services\ChiTietKhoService.cs" />
     <Compile Include="Services\ChiTietPhieuNhapService.cs" />
     <Compile Include="Services\ChucVuService.cs" />
