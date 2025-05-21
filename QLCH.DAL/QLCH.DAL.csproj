@@ -51,6 +51,7 @@
     <Compile Include="Models\ChiTietKho.cs" />
     <Compile Include="Models\ChiTietKhuyenMai.cs" />
     <Compile Include="Models\ChiTietPhieuNhap.cs" />
+    <Compile Include="Models\ChiTietPhieuXuatKho.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\CuaHang.cs" />
     <Compile Include="Models\DangKyCa.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Repositorys\ChiTietKhoRepository.cs" />
     <Compile Include="Repositorys\ChiTietKhuyenMaiRepository.cs" />
     <Compile Include="Repositorys\ChiTietPhieuNhapRepository.cs" />
+    <Compile Include="Repositorys\ChiTietPhieuXuatKhoRepository.cs" />
     <Compile Include="Repositorys\ChucVuRepository.cs" />
     <Compile Include="Repositorys\CuaHangRepository.cs" />
     <Compile Include="Repositorys\DangKyCaRepository.cs" />

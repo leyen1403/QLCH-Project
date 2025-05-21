@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\IChiTietKhoService.cs" />
     <Compile Include="Interfaces\IChiTietKhuyenMaiService.cs" />
     <Compile Include="Interfaces\IChiTietPhieuNhapService.cs" />
+    <Compile Include="Interfaces\IChiTietPhieuXuatKhoService.cs" />
     <Compile Include="Interfaces\IChucVuService.cs" />
     <Compile Include="Interfaces\ICuaHangService.cs" />
     <Compile Include="Interfaces\IDangKyCaService.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Services\ChiTietKhoService.cs" />
     <Compile Include="Services\ChiTietKhuyenMaiService.cs" />
     <Compile Include="Services\ChiTietPhieuNhapService.cs" />
+    <Compile Include="Services\ChiTietPhieuXuatKhoService.cs" />
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\CuaHangService.cs" />
     <Compile Include="Services\DangKyCaService.cs" />

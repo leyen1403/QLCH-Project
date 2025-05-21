@@ -108,5 +108,51 @@ namespace QLCH.DAL.Repositorys
             ExecuteNonQuery("DELETE FROM ChiTietKho WHERE MaChiTietKho = @id",
                 cmd => cmd.Parameters.AddWithValue("@id", id));
         }
+
+        public void TruTonKho(int maKho, int maBienThe, int soLuongXuat)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (var trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        var cmd = new SqlCommand("SELECT SoLuong FROM ChiTietKho WHERE MaKho = @MaKho AND MaBienThe = @MaBienThe", conn, trans);
+                        cmd.Parameters.AddWithValue("@MaKho", maKho);
+                        cmd.Parameters.AddWithValue("@MaBienThe", maBienThe);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result == null)
+                            throw new Exception("Không tìm thấy tồn kho.");
+
+                        int soLuongHienTai = Convert.ToInt32(result);
+                        if (soLuongHienTai < soLuongXuat)
+                            throw new Exception("Không đủ hàng trong kho.");
+
+                        int soLuongConLai = soLuongHienTai - soLuongXuat;
+
+                        var updateCmd = new SqlCommand(@"
+                    UPDATE ChiTietKho SET 
+                        SoLuong = @SoLuongMoi, 
+                        TrangThai = CASE WHEN @SoLuongMoi > 0 THEN N'Còn hàng' ELSE N'Hết hàng' END 
+                    WHERE MaKho = @MaKho AND MaBienThe = @MaBienThe", conn, trans);
+
+                        updateCmd.Parameters.AddWithValue("@SoLuongMoi", soLuongConLai);
+                        updateCmd.Parameters.AddWithValue("@MaKho", maKho);
+                        updateCmd.Parameters.AddWithValue("@MaBienThe", maBienThe);
+                        updateCmd.ExecuteNonQuery();
+
+                        trans.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        trans.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
     }
 }
