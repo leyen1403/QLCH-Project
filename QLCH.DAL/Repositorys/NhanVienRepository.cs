@@ -164,5 +164,39 @@ namespace QLCH.DAL.Repositorys
             var result = ExecuteQuery("SELECT TOP 1 * FROM NhanVien ORDER BY CreatedAt DESC");
             return result.Count > 0 ? result[0] : null;
         }
+
+        public bool Exists(string maNV)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SqlCommand("SELECT COUNT(*) FROM NhanVien WHERE MaNV = @MaNV", conn);
+                cmd.Parameters.AddWithValue("@MaNV", maNV);
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public List<string> GetNhanVienChuaCoTaiKhoan()
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SqlCommand(@"
+            SELECT MaNV FROM NhanVien
+            WHERE MaNV NOT IN (SELECT MaNV FROM TaiKhoan)", conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(reader["MaNV"].ToString());
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }

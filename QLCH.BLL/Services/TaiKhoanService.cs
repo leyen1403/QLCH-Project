@@ -12,6 +12,7 @@ namespace QLCH.BLL.Services
     public class TaiKhoanService : ITaiKhoanService
     {
         private readonly TaiKhoanRepository _repo = new TaiKhoanRepository();
+        private readonly NhanVienRepository _nhanVienRepo = new NhanVienRepository();
 
         public List<TaiKhoan> GetAll() => _repo.GetAll();
 
@@ -77,14 +78,53 @@ namespace QLCH.BLL.Services
         private void Validate(TaiKhoan tk)
         {
             var errors = new List<string>();
+
             if (string.IsNullOrWhiteSpace(tk.MaNV))
                 errors.Add("Mã nhân viên không được để trống.");
+
             if (string.IsNullOrWhiteSpace(tk.TenDangNhap))
                 errors.Add("Tên đăng nhập không được để trống.");
+            else
+            {
+                var existing = _repo.GetAll().Find(x => x.TenDangNhap == tk.TenDangNhap);
+                if (existing != null)
+                    errors.Add("Tên đăng nhập đã tồn tại.");
+            }
+
             if (string.IsNullOrWhiteSpace(tk.MatKhau))
                 errors.Add("Mật khẩu không được để trống.");
+            else if (tk.MatKhau.Length < 6)
+                errors.Add("Mật khẩu phải có ít nhất 6 ký tự.");
+
             if (string.IsNullOrWhiteSpace(tk.Email))
                 errors.Add("Email không được để trống.");
+            else
+            {
+                if (!tk.Email.Contains("@") || !tk.Email.Contains("."))
+                    errors.Add("Email không đúng định dạng.");
+                else
+                {
+                    var existingEmail = _repo.GetAll().Find(x => x.Email == tk.Email);
+                    if (existingEmail != null)
+                        errors.Add("Email đã tồn tại.");
+                }
+            }
+
+            if (!string.IsNullOrEmpty(tk.TrangThai) &&
+                tk.TrangThai != "Hoạt động" &&
+                tk.TrangThai != "Đã khóa" &&
+                tk.TrangThai != "Tạm ngừng")
+                errors.Add("Trạng thái không hợp lệ.");
+
+            if (string.IsNullOrWhiteSpace(tk.MaNV))
+            {
+                errors.Add("Mã nhân viên không được để trống.");
+            }
+            else if (!_nhanVienRepo.Exists(tk.MaNV))
+            {
+                errors.Add("Mã nhân viên không tồn tại trong hệ thống.");
+            }
+
             if (errors.Count > 0)
                 throw new Exception(string.Join("\n", errors));
         }
@@ -120,6 +160,11 @@ namespace QLCH.BLL.Services
             acc.MatKhau = HashPassword(newPassword);
             _repo.Update(acc);
             return true;
+        }
+
+        public List<string> GetMaNVChuaCoTaiKhoan()
+        {
+            return _nhanVienRepo.GetNhanVienChuaCoTaiKhoan();
         }
     }
 }

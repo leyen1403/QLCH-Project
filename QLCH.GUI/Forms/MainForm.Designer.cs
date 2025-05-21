@@ -72,7 +72,7 @@ namespace QLCH.GUI.Forms
             this.Controls.Add(this.pannel_main);
             this.Controls.Add(this.panel_nav);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1918, 1030);
