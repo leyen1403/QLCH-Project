@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Interfaces\IPhanQuyenManHinhService.cs" />
     <Compile Include="Interfaces\IPhieuNhapHangService.cs" />
+    <Compile Include="Interfaces\IPhieuXuatKhoService.cs" />
     <Compile Include="Interfaces\IPhongBanService.cs" />
     <Compile Include="Interfaces\ISanPhamService.cs" />
     <Compile Include="Interfaces\ITaiKhoanService.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Services\NhanVienService.cs" />
     <Compile Include="Services\PhanQuyenManHinhService.cs" />
     <Compile Include="Services\PhieuNhapHangService.cs" />
+    <Compile Include="Services\PhieuXuatKhoService.cs" />
     <Compile Include="Services\PhongBanService.cs" />
     <Compile Include="Services\SanPhamService.cs" />
     <Compile Include="Services\TaiKhoanService.cs" />
