@@ -154,5 +154,38 @@ namespace QLCH.DAL.Repositorys
             }
         }
 
+        public int? GetSoLuongTonKho(int maKho, int maBienThe)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SqlCommand(
+                    "SELECT SoLuong FROM ChiTietKho WHERE MaKho = @MaKho AND MaBienThe = @MaBienThe", conn);
+                cmd.Parameters.AddWithValue("@MaKho", maKho);
+                cmd.Parameters.AddWithValue("@MaBienThe", maBienThe);
+
+                var result = cmd.ExecuteScalar();
+                return result != null ? (int?)Convert.ToInt32(result) : null;
+            }
+        }
+
+        public void CapNhatTonKhoTheoKiemKe(int maKho, int maBienThe, int soLuongMoi)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SqlCommand(@"
+            UPDATE ChiTietKho 
+            SET SoLuong = @SoLuongMoi, 
+                TrangThai = CASE WHEN @SoLuongMoi > 0 THEN N'Còn hàng' ELSE N'Hết hàng' END
+            WHERE MaKho = @MaKho AND MaBienThe = @MaBienThe", conn);
+
+                cmd.Parameters.AddWithValue("@SoLuongMoi", soLuongMoi);
+                cmd.Parameters.AddWithValue("@MaKho", maKho);
+                cmd.Parameters.AddWithValue("@MaBienThe", maBienThe);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
