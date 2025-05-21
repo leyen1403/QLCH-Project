@@ -60,6 +60,7 @@
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\ThuocTinhBienThe.cs" />
     <Compile Include="Models\TinhLuong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorys\BaoHiemRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Repositorys\PhongBanRepository.cs" />
     <Compile Include="Repositorys\SanPhamRepository.cs" />
     <Compile Include="Repositorys\TaiKhoanRepository.cs" />
+    <Compile Include="Repositorys\ThuocTinhBienTheRepository.cs" />
     <Compile Include="Repositorys\TinhLuongRepository.cs" />
   </ItemGroup>
   <ItemGroup />
