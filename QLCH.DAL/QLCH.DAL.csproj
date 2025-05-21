@@ -44,8 +44,11 @@
   <ItemGroup>
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="Models\BaoHiem.cs" />
+    <Compile Include="Models\CaLamViec.cs" />
+    <Compile Include="Models\ChamCong.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\CuaHang.cs" />
+    <Compile Include="Models\DangKyCa.cs" />
     <Compile Include="Models\HopDongLaoDong.cs" />
     <Compile Include="Models\LichSuDieuChuyen.cs" />
     <Compile Include="Models\LichSuThangChuc.cs" />
@@ -53,8 +56,11 @@
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorys\BaoHiemRepository.cs" />
+    <Compile Include="Repositorys\CaLamViecRepository.cs" />
+    <Compile Include="Repositorys\ChamCongRepository.cs" />
     <Compile Include="Repositorys\ChucVuRepository.cs" />
     <Compile Include="Repositorys\CuaHangRepository.cs" />
+    <Compile Include="Repositorys\DangKyCaRepository.cs" />
     <Compile Include="Repositorys\HopDongLaoDongRepository.cs" />
     <Compile Include="Repositorys\LichSuDieuChuyenRepository.cs" />
     <Compile Include="Repositorys\LichSuThangChucRepository.cs" />
