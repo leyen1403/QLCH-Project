@@ -156,7 +156,7 @@ namespace QLCH.GUI
             string connectionString = $"Data Source={server};Initial Catalog={database};Integrated Security=True;TrustServerCertificate=True";
 
             // Câu lệnh SQL
-            string sql = "SELECT * FROM NhanVien";
+            string sql = "SELECT * FROM HopDongLaoDong";
 
             try
             {

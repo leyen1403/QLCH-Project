@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBaoHiemService.cs" />
     <Compile Include="Interfaces\IChucVuService.cs" />
     <Compile Include="Interfaces\ICuaHangService.cs" />
     <Compile Include="Interfaces\IHopDongLaoDongService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Interfaces\IPhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaoHiemService.cs" />
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\CuaHangService.cs" />
     <Compile Include="Services\HopDongLaoDongService.cs" />

@@ -43,12 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Models\BaoHiem.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\CuaHang.cs" />
     <Compile Include="Models\HopDongLaoDong.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorys\BaoHiemRepository.cs" />
     <Compile Include="Repositorys\ChucVuRepository.cs" />
     <Compile Include="Repositorys\CuaHangRepository.cs" />
     <Compile Include="Repositorys\HopDongLaoDongRepository.cs" />
