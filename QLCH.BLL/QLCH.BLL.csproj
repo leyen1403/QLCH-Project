@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IChucVuService.cs" />
+    <Compile Include="Interfaces\ICuaHangService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Interfaces\IPhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ChucVuService.cs" />
+    <Compile Include="Services\CuaHangService.cs" />
     <Compile Include="Services\NhanVienService.cs" />
     <Compile Include="Services\PhongBanService.cs" />
   </ItemGroup>

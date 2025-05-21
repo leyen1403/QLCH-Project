@@ -15,18 +15,12 @@ namespace QLCH.BLL.Services
 
         public List<PhongBan> GetAll()
         {
-            var data = _repo.GetAll();
-            if (data.Count == 0)
-                throw new Exception("Không có phòng ban nào.");
-            return data;
+            return _repo.GetAll();
         }
 
         public PhongBan GetById(int id)
         {
-            var pb = _repo.GetById(id);
-            if (pb == null)
-                throw new Exception("Phòng ban không tồn tại.");
-            return pb;
+            return _repo.GetById(id);
         }
 
         public bool Add(PhongBan pb)

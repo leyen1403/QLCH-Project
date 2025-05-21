@@ -18,22 +18,12 @@ namespace QLCH.BLL.Services
 
         public List<NhanVien> GetAllNhanViens()
         {
-            var danhSachNhanVien = _nhanVienRepository.GetAll();
-            if (danhSachNhanVien == null || danhSachNhanVien.Count == 0)
-            {
-                throw new Exception("Không có nhân viên nào trong hệ thống");
-            }
-            return danhSachNhanVien;
+            return _nhanVienRepository.GetAll();
         }
 
         public NhanVien GetNhanVienById(string id)
         {
-            var nhanVien = _nhanVienRepository.GetById(id);
-            if (nhanVien == null)
-            {
-                throw new Exception("Nhân viên không tồn tại");
-            }
-            return nhanVien;
+            return _nhanVienRepository.GetById(id);
         }
 
         public bool AddNhanVien(NhanVien nhanVien)

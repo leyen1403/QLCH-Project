@@ -14,18 +14,12 @@ namespace QLCH.BLL.Services
 
         public List<ChucVu> GetAll()
         {
-            var data = _repo.GetAll();
-            if (data.Count == 0)
-                throw new Exception("Không có chức vụ nào.");
-            return data;
+            return _repo.GetAll();
         }
 
         public ChucVu GetById(int id)
         {
-            var cv = _repo.GetById(id);
-            if (cv == null)
-                throw new Exception("Chức vụ không tồn tại.");
-            return cv;
+            return _repo.GetById(id);
         }
 
         public bool Add(ChucVu chucVu)
