@@ -67,6 +67,7 @@
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhanQuyenManHinh.cs" />
     <Compile Include="Models\PhieuNhapHang.cs" />
+    <Compile Include="Models\PhieuThanhToan.cs" />
     <Compile Include="Models\PhieuXuatKho.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Models\SanPham.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Repositorys\NhanVienRepository.cs" />
     <Compile Include="Repositorys\PhanQuyenManHinhRepository.cs" />
     <Compile Include="Repositorys\PhieuNhapHangRepository.cs" />
+    <Compile Include="Repositorys\PhieuThanhToanRepository.cs" />
     <Compile Include="Repositorys\PhieuXuatKhoRepository.cs" />
     <Compile Include="Repositorys\PhongBanRepository.cs" />
     <Compile Include="Repositorys\SanPhamRepository.cs" />

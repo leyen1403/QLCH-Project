@@ -117,5 +117,20 @@ namespace QLCH.DAL.Repositorys
             ExecuteNonQuery("DELETE FROM DonHang WHERE MaDonHang = @id",
                 cmd => cmd.Parameters.AddWithValue("@id", id));
         }
+
+        public void UpdateTrangThai(int maDonHang, string trangThai)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand("UPDATE DonHang SET TrangThai = @TrangThai WHERE MaDonHang = @MaDonHang", conn))
+                {
+                    cmd.Parameters.AddWithValue("@TrangThai", trangThai);
+                    cmd.Parameters.AddWithValue("@MaDonHang", maDonHang);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
