@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IManHinhService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
     <Compile Include="Interfaces\IPhongBanService.cs" />
+    <Compile Include="Interfaces\ITaiKhoanService.cs" />
     <Compile Include="Interfaces\ITinhLuongService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaoHiemService.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Services\ManHinhService.cs" />
     <Compile Include="Services\NhanVienService.cs" />
     <Compile Include="Services\PhongBanService.cs" />
+    <Compile Include="Services\TaiKhoanService.cs" />
     <Compile Include="Services\TinhLuongService.cs" />
   </ItemGroup>
   <ItemGroup>
