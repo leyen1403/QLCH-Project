@@ -1,4 +1,5 @@
-﻿using QLCH.BLL.Interfaces;
+﻿// PhongBanService.cs
+using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;

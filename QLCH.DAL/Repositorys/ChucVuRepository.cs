@@ -1,4 +1,5 @@
-﻿using QLCH.DAL.Models;
+﻿// ChucVuRepository.cs
+using QLCH.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

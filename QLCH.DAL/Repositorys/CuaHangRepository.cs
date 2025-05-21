@@ -1,4 +1,5 @@
-﻿using QLCH.DAL.Models;
+﻿// CuaHangRepository.cs
+using QLCH.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

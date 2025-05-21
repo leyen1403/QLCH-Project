@@ -1,4 +1,5 @@
-﻿using QLCH.DAL.Models;
+﻿// CuaHangService.cs
+using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
 using System.Collections.Generic;
