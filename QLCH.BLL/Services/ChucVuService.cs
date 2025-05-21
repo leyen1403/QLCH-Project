@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLCH.DAL.Models;
+using QLCH.DAL.Repositorys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,83 @@ using System.Threading.Tasks;
 
 namespace QLCH.BLL.Services
 {
-    internal class ChucVuService
+    public class ChucVuService
     {
+        private readonly ChucVuRepository _repo = new ChucVuRepository();
+
+        public List<ChucVu> GetAll()
+        {
+            var data = _repo.GetAll();
+            if (data.Count == 0)
+                throw new Exception("Không có chức vụ nào.");
+            return data;
+        }
+
+        public ChucVu GetById(int id)
+        {
+            var cv = _repo.GetById(id);
+            if (cv == null)
+                throw new Exception("Chức vụ không tồn tại.");
+            return cv;
+        }
+
+        public bool Add(ChucVu chucVu)
+        {
+            try
+            {
+                Validate(chucVu);
+                _repo.Add(chucVu);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi thêm chức vụ: {ex.Message}");
+                throw new Exception($"Lỗi khi thêm chức vụ: {ex.Message}");
+            }
+        }
+
+        public bool Update(ChucVu chucVu)
+        {
+            try
+            {
+                Validate(chucVu);
+                if (_repo.GetById(chucVu.MaChucVu) == null)
+                    throw new Exception("Chức vụ không tồn tại.");
+                _repo.Update(chucVu);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi cập nhật: {ex.Message}");
+                throw new Exception($"Lỗi khi cập nhật: {ex.Message}");
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                if (_repo.GetById(id) == null)
+                    throw new Exception("Chức vụ không tồn tại.");
+                _repo.Delete(id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi xóa: {ex.Message}");
+                throw new Exception($"Lỗi khi xóa: {ex.Message}");
+            }
+        }
+
+        private void Validate(ChucVu chucVu)
+        {
+            var errors = new List<string>();
+            if (string.IsNullOrWhiteSpace(chucVu.TenChucVu))
+                errors.Add("Tên chức vụ không được để trống.");
+            if (chucVu.HeSoLuong < 1.0m)
+                errors.Add("Hệ số lương phải >= 1.0.");
+            if (errors.Count > 0)
+                throw new Exception(string.Join("\n", errors));
+        }
     }
 }

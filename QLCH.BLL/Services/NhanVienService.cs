@@ -55,7 +55,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi thêm nhân viên: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi thêm nhân viên: {ex.Message}");
             }
         }
 
@@ -83,7 +83,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi cập nhật nhân viên: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi cập nhật nhân viên: {ex.Message}");
             }
         }
 
@@ -106,7 +106,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi xóa nhân viên: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi xóa nhân viên: {ex.Message}");
             }
         }
 

@@ -40,7 +40,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi thêm phòng ban: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi thêm phòng ban: {ex.Message}");
             }
         }
 
@@ -57,7 +57,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi cập nhật: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi cập nhật: {ex.Message}");
             }
         }
 
@@ -73,7 +73,7 @@ namespace QLCH.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi xóa: {ex.Message}");
-                return false;
+                throw new Exception($"Lỗi khi xóa: {ex.Message}");
             }
         }
 
