@@ -53,9 +53,11 @@
     <Compile Include="Models\LichSuDieuChuyen.cs" />
     <Compile Include="Models\LichSuThangChuc.cs" />
     <Compile Include="Models\ManHinh.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhanQuyenManHinh.cs" />
     <Compile Include="Models\PhongBan.cs" />
+    <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TinhLuong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,9 +71,11 @@
     <Compile Include="Repositorys\LichSuDieuChuyenRepository.cs" />
     <Compile Include="Repositorys\LichSuThangChucRepository.cs" />
     <Compile Include="Repositorys\ManHinhRepository.cs" />
+    <Compile Include="Repositorys\NhaCungCapRepository.cs" />
     <Compile Include="Repositorys\NhanVienRepository.cs" />
     <Compile Include="Repositorys\PhanQuyenManHinhRepository.cs" />
     <Compile Include="Repositorys\PhongBanRepository.cs" />
+    <Compile Include="Repositorys\SanPhamRepository.cs" />
     <Compile Include="Repositorys\TaiKhoanRepository.cs" />
     <Compile Include="Repositorys\TinhLuongRepository.cs" />
   </ItemGroup>
