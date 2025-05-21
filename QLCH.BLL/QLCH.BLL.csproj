@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IChucVuService.cs" />
     <Compile Include="Interfaces\INhanVienService.cs" />
+    <Compile Include="Interfaces\IPhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\NhanVienService.cs" />
+    <Compile Include="Services\PhongBanService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QLCH.DAL\QLCH.DAL.csproj">
