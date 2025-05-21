@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\IChucVuService.cs" />
     <Compile Include="Interfaces\ICuaHangService.cs" />
     <Compile Include="Interfaces\IDangKyCaService.cs" />
+    <Compile Include="Interfaces\IDonHangService.cs" />
     <Compile Include="Interfaces\IHopDongLaoDongService.cs" />
     <Compile Include="Interfaces\IKhachHangService.cs" />
     <Compile Include="Interfaces\IKhoHangService.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Services\ChucVuService.cs" />
     <Compile Include="Services\CuaHangService.cs" />
     <Compile Include="Services\DangKyCaService.cs" />
+    <Compile Include="Services\DonHangService.cs" />
     <Compile Include="Services\HopDongLaoDongService.cs" />
     <Compile Include="Services\KhachHangService.cs" />
     <Compile Include="Services\KhoHangService.cs" />
