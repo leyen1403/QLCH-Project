@@ -1,4 +1,5 @@
-﻿using QLCH.BLL.Helpers;
+﻿using QLCH.BLL.Common.Enums;
+using QLCH.BLL.Helpers;
 using QLCH.BLL.Services;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
@@ -27,7 +28,7 @@ namespace QLCH.GUI
                         TenDangNhap = "admin",
                         MatKhau = "admin123",
                         Email = "admin@localhost",
-                        TrangThai = "Hoạt động"
+                        TrangThai = EnumHelper.GetDescription(TrangThaiTaiKhoan.HoatDong)
                     };
 
                     taiKhoanSer.Add(admin);
