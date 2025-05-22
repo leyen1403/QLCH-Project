@@ -1,6 +1,6 @@
 ﻿namespace QLCH.GUI.Forms
 {
-    partial class NhanVienManagerForm
+    partial class ThongKeBaoCaoManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,15 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customTitle1 = new QLCH.GUI.Custom.CustomTitle();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.customGirdView1 = new QLCH.GUI.Custom.CustomGirdView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customGirdView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,17 +52,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1382, 85);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = global::QLCH.GUI.Properties.Resources.icons8_next_50;
-            this.pictureBox1.Location = new System.Drawing.Point(28, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.panel1.TabIndex = 3;
             // 
             // customTitle1
             // 
@@ -71,20 +61,10 @@
             this.customTitle1.ForeColor = System.Drawing.Color.DarkBlue;
             this.customTitle1.Location = new System.Drawing.Point(86, 23);
             this.customTitle1.Name = "customTitle1";
-            this.customTitle1.Size = new System.Drawing.Size(368, 46);
+            this.customTitle1.Size = new System.Drawing.Size(509, 46);
             this.customTitle1.TabIndex = 0;
-            this.customTitle1.Text = "QUẢN LÝ NHÂN VIÊN";
+            this.customTitle1.Text = "QUẢN LÝ THỐNG KÊ BÁO CÁO";
             this.customTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(0, 91);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1382, 182);
-            this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
@@ -96,7 +76,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 279);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1382, 674);
-            this.panel3.TabIndex = 2;
+            this.panel3.TabIndex = 5;
             // 
             // customGirdView1
             // 
@@ -140,21 +120,41 @@
             this.customGirdView1.Size = new System.Drawing.Size(1382, 674);
             this.customGirdView1.TabIndex = 0;
             // 
-            // NhanVienManagerForm
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(0, 91);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1382, 182);
+            this.panel2.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::QLCH.GUI.Properties.Resources.icons8_next_50;
+            this.pictureBox1.Location = new System.Drawing.Point(28, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(52, 50);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ThongKeBaoCaoManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 953);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Name = "NhanVienManagerForm";
-            this.Text = "NhanVienManagerForm";
+            this.Name = "ThongKeBaoCaoManagerForm";
+            this.Text = "ThongKeBaoCaoManagerForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customGirdView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,10 +162,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Custom.CustomTitle customTitle1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
+        private Custom.CustomTitle customTitle1;
         private System.Windows.Forms.Panel panel3;
         private Custom.CustomGirdView customGirdView1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

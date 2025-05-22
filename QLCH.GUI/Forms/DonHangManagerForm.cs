@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QLCH.GUI.Forms
 {
-    public partial class NhanVienManagerForm: Form
+    public partial class DonHangManagerForm: Form
     {
-        public NhanVienManagerForm()
+        public DonHangManagerForm()
         {
             InitializeComponent();
-        }
-
-        private void userDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

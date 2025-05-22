@@ -37,7 +37,7 @@ namespace QLCH.GUI.Forms
             // 
             // panel_nav
             // 
-            this.panel_nav.BackColor = System.Drawing.Color.White;
+            this.panel_nav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.panel_nav.Controls.Add(this.pictureBox1);
             this.panel_nav.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_nav.Location = new System.Drawing.Point(0, 0);
@@ -47,16 +47,17 @@ namespace QLCH.GUI.Forms
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(15)))), ((int)(((byte)(255)))));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(290, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(290, 145);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // pannel_main
             // 
-            this.pannel_main.BackColor = System.Drawing.Color.DimGray;
+            this.pannel_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.pannel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel_main.Location = new System.Drawing.Point(290, 0);
             this.pannel_main.Name = "pannel_main";
@@ -65,7 +66,7 @@ namespace QLCH.GUI.Forms
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
