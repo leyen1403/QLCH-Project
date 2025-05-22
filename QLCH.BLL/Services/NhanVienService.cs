@@ -1,5 +1,6 @@
 ﻿// NhanVienService.cs
 using QLCH.BLL.DTO;
+using QLCH.BLL.Helpers;
 using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
@@ -13,12 +14,14 @@ namespace QLCH.BLL.Services
         private readonly NhanVienRepository _nhanVienRepository;
         private readonly HopDongLaoDongRepository _hopDongRepo;
         private readonly BaoHiemRepository _baoHiemRepo;
+        private readonly TaiKhoanService _taiKhoanRepo;
 
         public NhanVienService()
         {
             _nhanVienRepository = new NhanVienRepository();
             _hopDongRepo = new HopDongLaoDongRepository();
             _baoHiemRepo = new BaoHiemRepository();
+            _taiKhoanRepo = new TaiKhoanService();
         }
 
         public List<NhanVien> GetAllNhanViens()
@@ -36,7 +39,7 @@ namespace QLCH.BLL.Services
             try
             {
                 // Validate thông tin nhân viên
-                ValidateNhanVien(nhanVien);
+                ValidationHelper.Validate<NhanVien>(nhanVien);
 
                 // Tạo mã nhân viên tự động
                 nhanVien.MaNV = automaticGenerateMaNV();
@@ -59,7 +62,7 @@ namespace QLCH.BLL.Services
             try
             {
                 // Validate thông tin nhân viên
-                ValidateNhanVien(nhanVien);
+                ValidationHelper.Validate<NhanVien>(nhanVien);
 
                 // Kiểm tra tồn tại
                 var existingNhanVien = _nhanVienRepository.GetById(nhanVien.MaNV);
@@ -122,84 +125,114 @@ namespace QLCH.BLL.Services
             {
                 throw new Exception($"Lỗi khi tự động tạo mã nhân viên: {ex.Message}");
             }
-        }
-
-        private void ValidateNhanVien(NhanVien nv)
-        {
-            if (nv == null)
-            {
-                throw new Exception("Đối tượng nhân viên không được null");
-            }
-
-            var errors = new List<string>();
-
-            var requiredStrings = new Dictionary<string, string>
-            {
-                { "HoTen", nv.HoTen },
-                { "CMND_CCCD", nv.CMND_CCCD },
-                { "SoDienThoai", nv.SoDienThoai },
-                { "Email", nv.Email },
-                { "LoaiHopDong", nv.LoaiHopDong },
-                { "TrangThai", nv.TrangThai }
-            };
-
-            foreach (var item in requiredStrings)
-            {
-                if (string.IsNullOrEmpty(item.Value))
-                {
-                    errors.Add($"{item.Key} không được để trống");
-                }
-            }
-
-            if (nv.MaChucVu <= 0) errors.Add("Mã chức vụ không hợp lệ");
-            if (nv.MaPhongBan <= 0) errors.Add("Mã phòng ban không hợp lệ");
-            if (nv.MaCuaHang <= 0) errors.Add("Mã cửa hàng không hợp lệ");
-
-            if (nv.NgayVaoLam == DateTime.MinValue) errors.Add("Ngày vào làm không được để trống");
-            if (nv.NgaySinh == DateTime.MinValue) errors.Add("Ngày sinh không được để trống");
-
-            if (errors.Count > 0)
-            {
-                throw new Exception(string.Join("\n", errors));
-            }
-        }
-
-        public NhanVienDTO ToNhanVienDTO(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
-        {
-            return new NhanVienDTO
-            {
-                MaNV = nv.MaNV,
-                HoTen = nv.HoTen,
-                CMND = nv.CMND_CCCD,
-                SoDienThoai = nv.SoDienThoai,
-                Email = nv.Email,
-                NgaySinh = nv.NgaySinh,
-                GioiTinh = nv.GioiTinh,
-                TrangThai = nv.TrangThai,
-                MaPhongBan = nv.MaPhongBan,
-                MaChucVu = nv.MaChucVu,
-                MaCuaHang = nv.MaCuaHang,
-
-                LoaiHopDong = hd?.LoaiHopDong,
-                NgayBatDau = hd?.NgayHieuLuc ?? DateTime.MinValue,
-                NgayKetThuc = hd?.NgayKetThuc ?? DateTime.MinValue,
-
-                MaBHXH = bh?.SoBHXH,
-                MaBHYT = bh?.SoBHYT,
-                NgayCap = bh?.NgayCap ?? DateTime.MinValue
-            };
-        }
+        }        
 
         public NhanVienDTO GetNhanVienFull(string maNV)
         {
             var nv = _nhanVienRepository.GetById(maNV);
-            var hd = _hopDongRepo.GetByMaNV(maNV);  // SELECT hợp đồng theo MaNV
-            var bh = _baoHiemRepo.GetByMaNV(maNV);  // SELECT bảo hiểm theo MaNV
+            if (nv == null)
+                throw new Exception("Không tìm thấy nhân viên.");
 
-            if (nv == null) throw new Exception("Không tìm thấy nhân viên.");
+            var hd = _hopDongRepo.GetByMaNV(maNV);
+            var bh = _baoHiemRepo.GetByMaNV(maNV);
 
-            return ToNhanVienDTO(nv, hd, bh);
+            return new NhanVienDTO
+            {
+                // Nhân viên
+                MaNV = nv.MaNV,
+                HoTen = nv.HoTen,
+                NgaySinh = nv.NgaySinh,
+                GioiTinh = nv.GioiTinh,
+                CMND = nv.CMND_CCCD,
+                MaSoThue = nv.MaSoThue,
+                SoDienThoai = nv.SoDienThoai,
+                Email = nv.Email,
+                DiaChi = nv.DiaChi,
+                MaChucVu = nv.MaChucVu,
+                MaPhongBan = nv.MaPhongBan,
+                MaCuaHang = nv.MaCuaHang,
+                LoaiHopDong = nv.LoaiHopDong,
+                TrangThai = nv.TrangThai,
+                NgayVaoLam = nv.NgayVaoLam,
+                NgayNghiViec = nv.NgayNghiViec ?? DateTime.Now.AddYears(1),
+
+                // Hợp đồng
+                MaHopDong = hd?.MaHopDong,
+                LuongCoBan = hd?.LuongCoBan,
+                ThoiHanHD = hd?.ThoiHanHD,
+                NgayKy = hd?.NgayKy ?? DateTime.Now,
+                NgayHieuLuc = hd?.NgayHieuLuc ?? DateTime.Now,
+                NgayKetThuc = hd?.NgayKetThuc ?? DateTime.Now,
+                TrangThaiHopDong = hd?.TrangThai,
+
+                // Bảo hiểm
+                MaBH = bh?.MaBaoHiem,
+                MaBHXH = bh?.SoBHXH,
+                MaBHYT = bh?.SoBHYT,
+                NhaCungCap = bh?.NhaCungCap,
+                NgayCap = bh?.NgayCap ?? DateTime.Now,
+                TrangThaiBaoHiem = bh?.TrangThai
+            };
         }
 
+        public bool AddNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
+        {
+            ValidationHelper.Validate<NhanVien>(nv);
+            ValidationHelper.Validate<HopDongLaoDong>(hd);
+            ValidationHelper.Validate<BaoHiem>(bh);
+            nv.MaNV = automaticGenerateMaNV();
+            nv.CreatedAt = DateTime.Now;
+            _nhanVienRepository.Add(nv);
+            hd.MaNV = nv.MaNV;
+            _hopDongRepo.Add(hd);
+            bh.MaNV = nv.MaNV;
+            _baoHiemRepo.Add(bh);
+            // Tạo tài khoản cho nhân viên
+            var tk = new TaiKhoan();
+            tk.MaNV = nv.MaNV;
+            tk.TenDangNhap = nv.MaNV;
+            tk.MatKhau = nv.MaNV;
+            tk.Email = nv.Email;
+            tk.TrangThai = nv.TrangThai;
+            _taiKhoanRepo.Add(tk);
+            return true;
+        }
+
+        public bool UpdateNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
+        {
+            ValidationHelper.Validate<NhanVien>(nv);
+            ValidationHelper.Validate<HopDongLaoDong>(hd);
+            ValidationHelper.Validate<BaoHiem>(bh);
+            var existingNhanVien = _nhanVienRepository.GetById(nv.MaNV);
+            if (existingNhanVien == null)
+            {
+                throw new Exception("Nhân viên không tồn tại");
+            }
+            nv.UpdatedAt = DateTime.Now;
+            _nhanVienRepository.Update(nv);
+            var existingHopDong = _hopDongRepo.GetByMaNV(nv.MaNV);
+            if (existingHopDong != null)
+            {
+                hd.MaNV = nv.MaNV;
+                _hopDongRepo.Update(hd);
+            }
+            else
+            {
+                hd.MaNV = nv.MaNV;
+                _hopDongRepo.Add(hd);
+            }
+            var existingBaoHiem = _baoHiemRepo.GetByMaNV(nv.MaNV);
+            if (existingBaoHiem != null)
+            {
+                bh.MaNV = nv.MaNV;
+                _baoHiemRepo.Update(bh);
+            }
+            else
+            {
+                bh.MaNV = nv.MaNV;
+                _baoHiemRepo.Add(bh);
+            }
+            return true;
+        }
     }
 }

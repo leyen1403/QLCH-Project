@@ -15,5 +15,6 @@ namespace QLCH.BLL.Interfaces
         bool Add(HopDongLaoDong hd);
         bool Update(HopDongLaoDong hd);
         bool Delete(int id);
+        HopDongLaoDong GetByMaNV(string maNV);
     }
 }

@@ -1,4 +1,5 @@
 ﻿// HopDongLaoDongService.cs
+using QLCH.BLL.Helpers;
 using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
@@ -28,7 +29,7 @@ namespace QLCH.BLL.Services
         {
             try
             {
-                Validate(hd);
+                ValidationHelper.Validate<HopDongLaoDong>(hd);
                 _repo.Add(hd);
                 return true;
             }
@@ -43,7 +44,7 @@ namespace QLCH.BLL.Services
         {
             try
             {
-                Validate(hd);
+                ValidationHelper.Validate<HopDongLaoDong>(hd);
                 if (_repo.GetById(hd.MaHopDong) == null)
                     throw new Exception("Hợp đồng không tồn tại.");
                 _repo.Update(hd);
@@ -72,24 +73,9 @@ namespace QLCH.BLL.Services
             }
         }
 
-        private void Validate(HopDongLaoDong hd)
+        public HopDongLaoDong GetByMaNV(string maNV)
         {
-            var errors = new List<string>();
-            if (string.IsNullOrWhiteSpace(hd.MaNV))
-                errors.Add("Mã nhân viên không được để trống.");
-            if (string.IsNullOrWhiteSpace(hd.LoaiHopDong))
-                errors.Add("Loại hợp đồng không được để trống.");
-            if (hd.LuongCoBan <= 0)
-                errors.Add("Lương cơ bản phải lớn hơn 0.");
-            if (hd.ThoiHanHD <= 0)
-                errors.Add("Thời hạn hợp đồng phải lớn hơn 0.");
-            if (hd.NgayHieuLuc < hd.NgayKy)
-                errors.Add("Ngày hiệu lực không được trước ngày ký.");
-            if (hd.NgayKetThuc.HasValue && hd.NgayKetThuc < hd.NgayHieuLuc)
-                errors.Add("Ngày kết thúc phải sau ngày hiệu lực.");
-
-            if (errors.Count > 0)
-                throw new Exception(string.Join("\n", errors));
+            return _repo.GetByMaNV(maNV);
         }
     }
 }

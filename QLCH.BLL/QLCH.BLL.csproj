@@ -32,7 +32,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +52,11 @@
     <Compile Include="Common\Enums\TrangThaiBaoHiem.cs" />
     <Compile Include="Common\Enums\TrangThaiHopDongLD.cs" />
     <Compile Include="Common\Enums\TrangThaiNhanVien.cs" />
+    <Compile Include="Common\Enums\TrangThaiTaiKhoan.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
-    <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Interfaces\IBaoCaoTonKhoService.cs" />
     <Compile Include="Interfaces\IBaoHiemService.cs" />
     <Compile Include="Interfaces\IBienTheSanPhamService.cs" />
@@ -128,6 +135,8 @@
       <Name>QLCH.DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLCH.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace QLCH.DAL
 
         // Chế độ test
         public static bool IsTestMode { get; set; } = false;
+
+        public static List<PhongBan> g_listPhongBan = new List<PhongBan>();
+        public static List<ChucVu> g_listChucVu = new List<ChucVu>();
+        public static List<CuaHang> g_listCuaHang = new List<CuaHang>();
     }
 }
