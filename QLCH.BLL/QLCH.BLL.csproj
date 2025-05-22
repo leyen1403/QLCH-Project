@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBaoCaoTonKhoService.cs" />
     <Compile Include="Interfaces\IBaoHiemService.cs" />
     <Compile Include="Interfaces\IBienTheSanPhamService.cs" />
     <Compile Include="Interfaces\ICaLamViecService.cs" />
     <Compile Include="Interfaces\IChamCongService.cs" />
+    <Compile Include="Interfaces\IChiTietBaoCaoTonKhoService.cs" />
     <Compile Include="Interfaces\IChiTietDonHangService.cs" />
     <Compile Include="Interfaces\IChiTietKhoService.cs" />
     <Compile Include="Interfaces\IChiTietKhuyenMaiService.cs" />
@@ -75,10 +77,12 @@
     <Compile Include="Interfaces\IThuocTinhBienTheService.cs" />
     <Compile Include="Interfaces\ITinhLuongService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaoCaoTonKhoService.cs" />
     <Compile Include="Services\BaoHiemService.cs" />
     <Compile Include="Services\BienTheSanPhamService.cs" />
     <Compile Include="Services\CaLamViecService.cs" />
     <Compile Include="Services\ChamCongService.cs" />
+    <Compile Include="Services\ChiTietBaoCaoTonKhoService.cs" />
     <Compile Include="Services\ChiTietDonHangService.cs" />
     <Compile Include="Services\ChiTietKhoService.cs" />
     <Compile Include="Services\ChiTietKhuyenMaiService.cs" />

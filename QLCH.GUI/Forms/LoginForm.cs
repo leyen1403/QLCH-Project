@@ -89,7 +89,8 @@ namespace QLCH.GUI
             {
                 if (testConnection())
                 {
-                    MessageBox.Show("Kết nối thành công sau khi cấu hình!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Kết nối thành công sau khi cấu hình!\nVui lòng khởi động lại hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
                 else
                 {

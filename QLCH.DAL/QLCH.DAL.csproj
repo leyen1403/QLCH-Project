@@ -43,10 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Models\BaoCaoTonKho.cs" />
     <Compile Include="Models\BaoHiem.cs" />
     <Compile Include="Models\BienTheSanPham.cs" />
     <Compile Include="Models\CaLamViec.cs" />
     <Compile Include="Models\ChamCong.cs" />
+    <Compile Include="Models\ChiTietBaoCaoTonKho.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietKho.cs" />
     <Compile Include="Models\ChiTietKhuyenMai.cs" />
@@ -77,10 +79,12 @@
     <Compile Include="Models\ThuocTinhBienThe.cs" />
     <Compile Include="Models\TinhLuong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorys\BaoCaoTonKhoRepository.cs" />
     <Compile Include="Repositorys\BaoHiemRepository.cs" />
     <Compile Include="Repositorys\BienTheSanPhamRepository.cs" />
     <Compile Include="Repositorys\CaLamViecRepository.cs" />
     <Compile Include="Repositorys\ChamCongRepository.cs" />
+    <Compile Include="Repositorys\ChiTietBaoCaoTonKhoRepository.cs" />
     <Compile Include="Repositorys\ChiTietDonHangRepository.cs" />
     <Compile Include="Repositorys\ChiTietKhoRepository.cs" />
     <Compile Include="Repositorys\ChiTietKhuyenMaiRepository.cs" />
