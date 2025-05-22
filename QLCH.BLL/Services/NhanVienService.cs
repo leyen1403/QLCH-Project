@@ -181,6 +181,7 @@ namespace QLCH.BLL.Services
                 NgaySinh = nv.NgaySinh,
                 GioiTinh = nv.GioiTinh,
                 CMND = nv.CMND_CCCD,
+                MaSoThue = nv.MaSoThue,
                 SoDienThoai = nv.SoDienThoai,
                 Email = nv.Email,
                 DiaChi = nv.DiaChi,
@@ -189,23 +190,74 @@ namespace QLCH.BLL.Services
                 MaCuaHang = nv.MaCuaHang,
                 LoaiHopDong = nv.LoaiHopDong,
                 TrangThai = nv.TrangThai,
-                NgayBatDau = nv.NgayVaoLam,
-                NgayKetThuc = nv.NgayNghiViec ?? DateTime.MinValue,
+                NgayVaoLam = nv.NgayVaoLam,
+                NgayNghiViec = nv.NgayNghiViec ?? DateTime.Now.AddYears(1),
 
                 // Hợp đồng
                 MaHopDong = hd?.MaHopDong,
                 LuongCoBan = hd?.LuongCoBan,
                 ThoiHanHD = hd?.ThoiHanHD,
                 NgayKy = hd?.NgayKy ?? DateTime.Now,
+                NgayHieuLuc = hd?.NgayHieuLuc ?? DateTime.Now,
+                NgayKetThuc = hd?.NgayKetThuc ?? DateTime.Now,
                 TrangThaiHopDong = hd?.TrangThai,
 
                 // Bảo hiểm
+                MaBH = bh?.MaBaoHiem,
                 MaBHXH = bh?.SoBHXH,
                 MaBHYT = bh?.SoBHYT,
                 NhaCungCap = bh?.NhaCungCap,
                 NgayCap = bh?.NgayCap ?? DateTime.Now,
                 TrangThaiBaoHiem = bh?.TrangThai
             };
+        }
+
+        public bool AddNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
+        {
+            ValidateNhanVien(nv);
+            nv.MaNV = automaticGenerateMaNV();
+            nv.CreatedAt = DateTime.Now;
+            _nhanVienRepository.Add(nv);
+            hd.MaNV = nv.MaNV;
+            _hopDongRepo.Add(hd);
+            bh.MaNV = nv.MaNV;
+            _baoHiemRepo.Add(bh);
+            return true;
+        }
+
+        public bool UpdateNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
+        {
+            ValidateNhanVien(nv);
+            var existingNhanVien = _nhanVienRepository.GetById(nv.MaNV);
+            if (existingNhanVien == null)
+            {
+                throw new Exception("Nhân viên không tồn tại");
+            }
+            nv.UpdatedAt = DateTime.Now;
+            _nhanVienRepository.Update(nv);
+            var existingHopDong = _hopDongRepo.GetByMaNV(nv.MaNV);
+            if (existingHopDong != null)
+            {
+                hd.MaNV = nv.MaNV;
+                _hopDongRepo.Update(hd);
+            }
+            else
+            {
+                hd.MaNV = nv.MaNV;
+                _hopDongRepo.Add(hd);
+            }
+            var existingBaoHiem = _baoHiemRepo.GetByMaNV(nv.MaNV);
+            if (existingBaoHiem != null)
+            {
+                bh.MaNV = nv.MaNV;
+                _baoHiemRepo.Update(bh);
+            }
+            else
+            {
+                bh.MaNV = nv.MaNV;
+                _baoHiemRepo.Add(bh);
+            }
+            return true;
         }
     }
 }

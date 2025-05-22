@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -36,6 +36,17 @@ namespace QLCH.BLL.Helpers
                 .ToList();
             comboBox.DisplayMember = "Value";
             comboBox.ValueMember = "Key";
+        }
+
+        public static T GetEnumValueFromDescription<T>(string description)
+        {
+            foreach (var field in typeof(T).GetFields())
+            {
+                var attr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+                if (attr != null && attr.Description == description)
+                    return (T)field.GetValue(null);
+            }
+            throw new ArgumentException($"Không tìm thấy enum nào với mô tả: {description}");
         }
     }
 }

@@ -126,13 +126,17 @@ namespace QLCH.DAL.Repositorys
         {
             string query = @"
                 INSERT INTO NhanVien 
-                (HoTen, NgaySinh, GioiTinh, CMND_CCCD, MaSoThue, SoDienThoai, Email, DiaChi, 
+                (MaNV, HoTen, NgaySinh, GioiTinh, CMND_CCCD, MaSoThue, SoDienThoai, Email, DiaChi, 
                  MaChucVu, MaPhongBan, MaCuaHang, LoaiHopDong, TrangThai, NgayVaoLam, CreatedAt) 
                 VALUES 
-                (@HoTen, @NgaySinh, @GioiTinh, @CMND_CCCD, @MaSoThue, @SoDienThoai, @Email, @DiaChi, 
+                (@MaNV, @HoTen, @NgaySinh, @GioiTinh, @CMND_CCCD, @MaSoThue, @SoDienThoai, @Email, @DiaChi, 
                  @MaChucVu, @MaPhongBan, @MaCuaHang, @LoaiHopDong, @TrangThai, @NgayVaoLam, GETDATE())";
 
-            ExecuteNonQueryWithTransaction(query, command => MapParameters(command, nhanVien));
+            ExecuteNonQueryWithTransaction(query, command =>
+            {
+                MapParameters(command, nhanVien);
+                command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
+            }); 
         }
 
         public void Update(NhanVien nhanVien)

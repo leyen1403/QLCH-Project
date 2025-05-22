@@ -140,5 +140,32 @@ namespace QLCH.DAL.Repositorys
                 cmd => cmd.Parameters.AddWithValue("@maNV", maNV));
             return result.Count > 0 ? result[0] : null;
         }
+
+        public void UpDateByMaNV(HopDongLaoDong hd)
+        {
+            string query = @"
+                UPDATE HopDongLaoDong SET
+                    MaHopDong = @MaHopDong,
+                    LoaiHopDong = @LoaiHopDong,
+                    NgayKy = @NgayKy,
+                    NgayHieuLuc = @NgayHieuLuc,
+                    NgayKetThuc = @NgayKetThuc,
+                    LuongCoBan = @LuongCoBan,
+                    ThoiHanHD = @ThoiHanHD,
+                    TrangThai = @TrangThai
+                WHERE MaNV = @MaNV";
+            ExecuteNonQueryWithTransaction(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@MaHopDong", hd.MaHopDong);
+                cmd.Parameters.AddWithValue("@MaNV", hd.MaNV);
+                cmd.Parameters.AddWithValue("@LoaiHopDong", hd.LoaiHopDong);
+                cmd.Parameters.AddWithValue("@NgayKy", hd.NgayKy);
+                cmd.Parameters.AddWithValue("@NgayHieuLuc", hd.NgayHieuLuc);
+                cmd.Parameters.AddWithValue("@NgayKetThuc", hd.NgayKetThuc.HasValue ? (object)hd.NgayKetThuc.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@LuongCoBan", hd.LuongCoBan);
+                cmd.Parameters.AddWithValue("@ThoiHanHD", hd.ThoiHanHD);
+                cmd.Parameters.AddWithValue("@TrangThai", hd.TrangThai);
+            });
+        }
     }
 }

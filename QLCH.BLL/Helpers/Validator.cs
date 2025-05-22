@@ -55,10 +55,6 @@ namespace QLCH.BLL.Helpers
             if (string.IsNullOrWhiteSpace(dto.TrangThai))
                 throw new ArgumentException("Trạng thái không được để trống");
 
-            // Ngày bắt đầu/kết thúc hợp đồng
-            if (dto.NgayBatDau > dto.NgayKetThuc)
-                throw new ArgumentException("Ngày kết thúc phải sau ngày bắt đầu");
-
             // Hợp đồng lao động
             if (dto.LuongCoBan.HasValue && dto.LuongCoBan <= 0)
                 throw new ArgumentException("Lương cơ bản phải lớn hơn 0");

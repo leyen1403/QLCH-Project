@@ -121,5 +121,24 @@ namespace QLCH.DAL.Repositorys
                 cmd => cmd.Parameters.AddWithValue("@maNV", maNV));
             return list.Count > 0 ? list[0] : null;
         }
+
+        public void UpdateByMaNV(BaoHiem bh)
+        {
+            string query = @"
+                UPDATE BaoHiem SET 
+                    MaBaoHiem = @id, SoBHXH = @SoBHXH, SoBHYT = @SoBHYT,
+                    NgayCap = @NgayCap, NhaCungCap = @NhaCungCap, TrangThai = @TrangThai
+                WHERE MaNV = @MaNV";
+            ExecuteNonQuery(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@id", bh.MaBaoHiem);
+                cmd.Parameters.AddWithValue("@MaNV", bh.MaNV);
+                cmd.Parameters.AddWithValue("@SoBHXH", bh.SoBHXH);
+                cmd.Parameters.AddWithValue("@SoBHYT", bh.SoBHYT);
+                cmd.Parameters.AddWithValue("@NgayCap", bh.NgayCap);
+                cmd.Parameters.AddWithValue("@NhaCungCap", bh.NhaCungCap);
+                cmd.Parameters.AddWithValue("@TrangThai", bh.TrangThai);
+            });
+        }
     }
 }

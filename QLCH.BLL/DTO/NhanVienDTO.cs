@@ -14,6 +14,7 @@ namespace QLCH.BLL.DTO
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
         public string CMND { get; set; }
+        public string MaSoThue { get; set; }
         public string SoDienThoai { get; set; }
         public string Email { get; set; }
         public string DiaChi { get; set; }
@@ -22,17 +23,20 @@ namespace QLCH.BLL.DTO
         public int MaCuaHang { get; set; }
         public string LoaiHopDong { get; set; }
         public string TrangThai { get; set; }
-        public DateTime NgayBatDau { get; set; }
-        public DateTime NgayKetThuc { get; set; }
+        public DateTime NgayVaoLam { get; set; }
+        public DateTime NgayNghiViec { get; set; }
 
         // Hợp đồng lao động
         public int? MaHopDong { get; set; }
         public decimal? LuongCoBan { get; set; }
         public int? ThoiHanHD { get; set; }
         public DateTime NgayKy { get; set; }
+        public DateTime NgayHieuLuc { get; set; }
+        public DateTime NgayKetThuc { get; set; }
         public string TrangThaiHopDong { get; set; }
 
         // Bảo hiểm
+        public int? MaBH { get; set; }
         public string MaBHXH { get; set; }
         public string MaBHYT { get; set; }
         public string NhaCungCap { get; set; }

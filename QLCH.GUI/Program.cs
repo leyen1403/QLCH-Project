@@ -1,4 +1,5 @@
 using QLCH.BLL.Common.Enums;
+using QLCH.DAL;
 using QLCH.GUI.Forms;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace QLCH.GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
-            Application.Run(new NhanVienDetailForm(FormMode.Insert));
+            Application.Run(new NhanVienDetailForm(FormMode.Update, "NV0002"));
         }
     }
 }
