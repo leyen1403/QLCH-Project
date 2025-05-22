@@ -1,4 +1,5 @@
 ﻿// NhanVienService.cs
+using QLCH.BLL.DTO;
 using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
@@ -10,10 +11,14 @@ namespace QLCH.BLL.Services
     public class NhanVienService : INhanVienService
     {
         private readonly NhanVienRepository _nhanVienRepository;
+        private readonly HopDongLaoDongRepository _hopDongRepo;
+        private readonly BaoHiemRepository _baoHiemRepo;
 
         public NhanVienService()
         {
             _nhanVienRepository = new NhanVienRepository();
+            _hopDongRepo = new HopDongLaoDongRepository();
+            _baoHiemRepo = new BaoHiemRepository();
         }
 
         public List<NhanVien> GetAllNhanViens()
@@ -158,5 +163,43 @@ namespace QLCH.BLL.Services
                 throw new Exception(string.Join("\n", errors));
             }
         }
+
+        public NhanVienDTO ToNhanVienDTO(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
+        {
+            return new NhanVienDTO
+            {
+                MaNV = nv.MaNV,
+                HoTen = nv.HoTen,
+                CMND = nv.CMND_CCCD,
+                SoDienThoai = nv.SoDienThoai,
+                Email = nv.Email,
+                NgaySinh = nv.NgaySinh,
+                GioiTinh = nv.GioiTinh,
+                TrangThai = nv.TrangThai,
+                MaPhongBan = nv.MaPhongBan,
+                MaChucVu = nv.MaChucVu,
+                MaCuaHang = nv.MaCuaHang,
+
+                LoaiHopDong = hd?.LoaiHopDong,
+                NgayBatDau = hd?.NgayHieuLuc ?? DateTime.MinValue,
+                NgayKetThuc = hd?.NgayKetThuc ?? DateTime.MinValue,
+
+                MaBHXH = bh?.SoBHXH,
+                MaBHYT = bh?.SoBHYT,
+                NgayCap = bh?.NgayCap ?? DateTime.MinValue
+            };
+        }
+
+        public NhanVienDTO GetNhanVienFull(string maNV)
+        {
+            var nv = _nhanVienRepository.GetById(maNV);
+            var hd = _hopDongRepo.GetByMaNV(maNV);  // SELECT hợp đồng theo MaNV
+            var bh = _baoHiemRepo.GetByMaNV(maNV);  // SELECT bảo hiểm theo MaNV
+
+            if (nv == null) throw new Exception("Không tìm thấy nhân viên.");
+
+            return ToNhanVienDTO(nv, hd, bh);
+        }
+
     }
 }

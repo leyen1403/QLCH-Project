@@ -133,5 +133,12 @@ namespace QLCH.DAL.Repositorys
             ExecuteNonQueryWithTransaction("DELETE FROM HopDongLaoDong WHERE MaHopDong = @id",
                 cmd => cmd.Parameters.AddWithValue("@id", id));
         }
+
+        public HopDongLaoDong GetByMaNV(string maNV)
+        {
+            var result = ExecuteQuery("SELECT * FROM HopDongLaoDong WHERE MaNV = @maNV",
+                cmd => cmd.Parameters.AddWithValue("@maNV", maNV));
+            return result.Count > 0 ? result[0] : null;
+        }
     }
 }

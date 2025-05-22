@@ -114,5 +114,12 @@ namespace QLCH.DAL.Repositorys
             ExecuteNonQuery("DELETE FROM BaoHiem WHERE MaBaoHiem = @id",
                 cmd => cmd.Parameters.AddWithValue("@id", id));
         }
+
+        public BaoHiem GetByMaNV(string maNV)
+        {
+            var list = ExecuteQuery("SELECT * FROM BaoHiem WHERE MaNV = @maNV",
+                cmd => cmd.Parameters.AddWithValue("@maNV", maNV));
+            return list.Count > 0 ? list[0] : null;
+        }
     }
 }
