@@ -1,5 +1,6 @@
 ﻿// NhanVienService.cs
 using QLCH.BLL.DTO;
+using QLCH.BLL.Helpers;
 using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
@@ -36,7 +37,7 @@ namespace QLCH.BLL.Services
             try
             {
                 // Validate thông tin nhân viên
-                ValidateNhanVien(nhanVien);
+                ValidationHelper.Validate<NhanVien>(nhanVien);
 
                 // Tạo mã nhân viên tự động
                 nhanVien.MaNV = automaticGenerateMaNV();
@@ -59,7 +60,7 @@ namespace QLCH.BLL.Services
             try
             {
                 // Validate thông tin nhân viên
-                ValidateNhanVien(nhanVien);
+                ValidationHelper.Validate<NhanVien>(nhanVien);
 
                 // Kiểm tra tồn tại
                 var existingNhanVien = _nhanVienRepository.GetById(nhanVien.MaNV);
@@ -122,47 +123,7 @@ namespace QLCH.BLL.Services
             {
                 throw new Exception($"Lỗi khi tự động tạo mã nhân viên: {ex.Message}");
             }
-        }
-
-        private void ValidateNhanVien(NhanVien nv)
-        {
-            if (nv == null)
-            {
-                throw new Exception("Đối tượng nhân viên không được null");
-            }
-
-            var errors = new List<string>();
-
-            var requiredStrings = new Dictionary<string, string>
-            {
-                { "HoTen", nv.HoTen },
-                { "CMND_CCCD", nv.CMND_CCCD },
-                { "SoDienThoai", nv.SoDienThoai },
-                { "Email", nv.Email },
-                { "LoaiHopDong", nv.LoaiHopDong },
-                { "TrangThai", nv.TrangThai }
-            };
-
-            foreach (var item in requiredStrings)
-            {
-                if (string.IsNullOrEmpty(item.Value))
-                {
-                    errors.Add($"{item.Key} không được để trống");
-                }
-            }
-
-            if (nv.MaChucVu <= 0) errors.Add("Mã chức vụ không hợp lệ");
-            if (nv.MaPhongBan <= 0) errors.Add("Mã phòng ban không hợp lệ");
-            if (nv.MaCuaHang <= 0) errors.Add("Mã cửa hàng không hợp lệ");
-
-            if (nv.NgayVaoLam == DateTime.MinValue) errors.Add("Ngày vào làm không được để trống");
-            if (nv.NgaySinh == DateTime.MinValue) errors.Add("Ngày sinh không được để trống");
-
-            if (errors.Count > 0)
-            {
-                throw new Exception(string.Join("\n", errors));
-            }
-        }
+        }        
 
         public NhanVienDTO GetNhanVienFull(string maNV)
         {
@@ -214,7 +175,9 @@ namespace QLCH.BLL.Services
 
         public bool AddNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
         {
-            ValidateNhanVien(nv);
+            ValidationHelper.Validate<NhanVien>(nv);
+            ValidationHelper.Validate<HopDongLaoDong>(hd);
+            ValidationHelper.Validate<BaoHiem>(bh);
             nv.MaNV = automaticGenerateMaNV();
             nv.CreatedAt = DateTime.Now;
             _nhanVienRepository.Add(nv);
@@ -227,7 +190,9 @@ namespace QLCH.BLL.Services
 
         public bool UpdateNhanVienFull(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
         {
-            ValidateNhanVien(nv);
+            ValidationHelper.Validate<NhanVien>(nv);
+            ValidationHelper.Validate<HopDongLaoDong>(hd);
+            ValidationHelper.Validate<BaoHiem>(bh);
             var existingNhanVien = _nhanVienRepository.GetById(nv.MaNV);
             if (existingNhanVien == null)
             {

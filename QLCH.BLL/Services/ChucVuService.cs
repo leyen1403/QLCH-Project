@@ -1,4 +1,5 @@
 ﻿// ChucVuService.cs
+using QLCH.BLL.Helpers;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
@@ -27,7 +28,7 @@ namespace QLCH.BLL.Services
         {
             try
             {
-                Validate(chucVu);
+                ValidationHelper.Validate<ChucVu>(chucVu);
                 _repo.Add(chucVu);
                 return true;
             }
@@ -42,7 +43,7 @@ namespace QLCH.BLL.Services
         {
             try
             {
-                Validate(chucVu);
+                ValidationHelper.Validate<ChucVu>(chucVu);
                 if (_repo.GetById(chucVu.MaChucVu) == null)
                     throw new Exception("Chức vụ không tồn tại.");
                 _repo.Update(chucVu);
@@ -69,17 +70,6 @@ namespace QLCH.BLL.Services
                 Console.WriteLine($"Lỗi khi xóa: {ex.Message}");
                 throw new Exception($"Lỗi khi xóa: {ex.Message}");
             }
-        }
-
-        private void Validate(ChucVu chucVu)
-        {
-            var errors = new List<string>();
-            if (string.IsNullOrWhiteSpace(chucVu.TenChucVu))
-                errors.Add("Tên chức vụ không được để trống.");
-            if (chucVu.HeSoLuong < 1.0m)
-                errors.Add("Hệ số lương phải >= 1.0.");
-            if (errors.Count > 0)
-                throw new Exception(string.Join("\n", errors));
         }
     }
 }
