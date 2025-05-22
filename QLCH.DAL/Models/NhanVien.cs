@@ -1,6 +1,7 @@
 ﻿// NhanVien.cs
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace QLCH.DAL.Models
     {
         public string MaNV { get; set; }
 
+        [Required(ErrorMessage = "Họ tên bắt buộc")]
         public string HoTen { get; set; }
 
         public DateTime NgaySinh { get; set; }

@@ -63,10 +63,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbTrangThaiHopDong = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.dtpNgayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.txtMaSoThue = new System.Windows.Forms.TextBox();
             this.dtpNgayHieuLuc = new System.Windows.Forms.DateTimePicker();
             this.txtThoiHan = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -82,16 +84,14 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.txtNhaCungCap = new System.Windows.Forms.TextBox();
             this.txtSoBHYT = new System.Windows.Forms.TextBox();
             this.txtSoBHXH = new System.Windows.Forms.TextBox();
+            this.txtMaBaoHiem = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
-            this.txtMaSoThue = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtMaBaoHiem = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -436,6 +436,15 @@
             this.label23.TabIndex = 10;
             this.label23.Text = "Trạng thái hợp đồng:";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(20, 176);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 13);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Mã số thuế:";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -469,6 +478,13 @@
             this.label16.Size = new System.Drawing.Size(74, 13);
             this.label16.TabIndex = 7;
             this.label16.Text = "Mã hợp đồng:";
+            // 
+            // txtMaSoThue
+            // 
+            this.txtMaSoThue.Location = new System.Drawing.Point(140, 173);
+            this.txtMaSoThue.Name = "txtMaSoThue";
+            this.txtMaSoThue.Size = new System.Drawing.Size(200, 20);
+            this.txtMaSoThue.TabIndex = 2;
             // 
             // dtpNgayHieuLuc
             // 
@@ -605,6 +621,15 @@
             this.label28.TabIndex = 6;
             this.label28.Text = "Số BHYT:";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(20, 32);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 13);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Mã bảo hiểm:";
+            // 
             // label29
             // 
             this.label29.AutoSize = true;
@@ -635,6 +660,14 @@
             this.txtSoBHXH.Size = new System.Drawing.Size(200, 20);
             this.txtSoBHXH.TabIndex = 0;
             // 
+            // txtMaBaoHiem
+            // 
+            this.txtMaBaoHiem.Enabled = false;
+            this.txtMaBaoHiem.Location = new System.Drawing.Point(140, 29);
+            this.txtMaBaoHiem.Name = "txtMaBaoHiem";
+            this.txtMaBaoHiem.Size = new System.Drawing.Size(200, 20);
+            this.txtMaBaoHiem.TabIndex = 0;
+            // 
             // btnLuu
             // 
             this.btnLuu.Location = new System.Drawing.Point(572, 12);
@@ -655,45 +688,12 @@
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // txtMaSoThue
-            // 
-            this.txtMaSoThue.Location = new System.Drawing.Point(140, 173);
-            this.txtMaSoThue.Name = "txtMaSoThue";
-            this.txtMaSoThue.Size = new System.Drawing.Size(200, 20);
-            this.txtMaSoThue.TabIndex = 2;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(20, 176);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 13);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Mã số thuế:";
-            // 
-            // txtMaBaoHiem
-            // 
-            this.txtMaBaoHiem.Enabled = false;
-            this.txtMaBaoHiem.Location = new System.Drawing.Point(140, 29);
-            this.txtMaBaoHiem.Name = "txtMaBaoHiem";
-            this.txtMaBaoHiem.Size = new System.Drawing.Size(200, 20);
-            this.txtMaBaoHiem.TabIndex = 0;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(20, 32);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 13);
-            this.label24.TabIndex = 7;
-            this.label24.Text = "Mã bảo hiểm:";
-            // 
             // NhanVienDetailForm
             // 
             this.AcceptButton = this.btnLuu;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 961);
+            this.ClientSize = new System.Drawing.Size(733, 875);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox4);
