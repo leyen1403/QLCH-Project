@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\FormMode.cs" />
     <Compile Include="Common\Enums\GioiTinhNhanVien.cs" />
     <Compile Include="Common\Enums\LoaiHopDong.cs" />
     <Compile Include="Common\Enums\TrangThaiBaoHiem.cs" />

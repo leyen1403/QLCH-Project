@@ -65,6 +65,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NhanVienDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NhanVienDetailForm.Designer.cs">
+      <DependentUpon>NhanVienDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NhanVienDetailForm.resx">
+      <DependentUpon>NhanVienDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
