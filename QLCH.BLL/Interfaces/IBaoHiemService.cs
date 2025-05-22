@@ -14,5 +14,6 @@ namespace QLCH.BLL.Interfaces
         bool Add(BaoHiem bh);
         bool Update(BaoHiem bh);
         bool Delete(int id);
+        BaoHiem GetByMaNV(string maNV);
     }
 }

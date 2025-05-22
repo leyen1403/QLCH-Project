@@ -1,4 +1,5 @@
 // INhanVienService.cs
+using QLCH.BLL.DTO;
 using QLCH.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace QLCH.BLL.Interfaces
         bool AddNhanVien(NhanVien nhanVien);
         bool UpdateNhanVien(NhanVien nhanVien);
         bool DeleteNhanVien(string id);
+        NhanVienDTO GetNhanVienFull(string maNV);
     }
 }

@@ -88,5 +88,10 @@ namespace QLCH.BLL.Services
             if (errors.Count > 0)
                 throw new Exception(string.Join("\n", errors));
         }
+
+        public BaoHiem GetByMaNV(string maNV)
+        {
+            return _repo.GetByMaNV(maNV);
+        }
     }
 }

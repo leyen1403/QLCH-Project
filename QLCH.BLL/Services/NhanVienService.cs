@@ -164,42 +164,48 @@ namespace QLCH.BLL.Services
             }
         }
 
-        public NhanVienDTO ToNhanVienDTO(NhanVien nv, HopDongLaoDong hd, BaoHiem bh)
-        {
-            return new NhanVienDTO
-            {
-                MaNV = nv.MaNV,
-                HoTen = nv.HoTen,
-                CMND = nv.CMND_CCCD,
-                SoDienThoai = nv.SoDienThoai,
-                Email = nv.Email,
-                NgaySinh = nv.NgaySinh,
-                GioiTinh = nv.GioiTinh,
-                TrangThai = nv.TrangThai,
-                MaPhongBan = nv.MaPhongBan,
-                MaChucVu = nv.MaChucVu,
-                MaCuaHang = nv.MaCuaHang,
-
-                LoaiHopDong = hd?.LoaiHopDong,
-                NgayBatDau = hd?.NgayHieuLuc ?? DateTime.MinValue,
-                NgayKetThuc = hd?.NgayKetThuc ?? DateTime.MinValue,
-
-                MaBHXH = bh?.SoBHXH,
-                MaBHYT = bh?.SoBHYT,
-                NgayCap = bh?.NgayCap ?? DateTime.MinValue
-            };
-        }
-
         public NhanVienDTO GetNhanVienFull(string maNV)
         {
             var nv = _nhanVienRepository.GetById(maNV);
-            var hd = _hopDongRepo.GetByMaNV(maNV);  // SELECT hợp đồng theo MaNV
-            var bh = _baoHiemRepo.GetByMaNV(maNV);  // SELECT bảo hiểm theo MaNV
+            if (nv == null)
+                throw new Exception("Không tìm thấy nhân viên.");
 
-            if (nv == null) throw new Exception("Không tìm thấy nhân viên.");
+            var hd = _hopDongRepo.GetByMaNV(maNV);
+            var bh = _baoHiemRepo.GetByMaNV(maNV);
 
-            return ToNhanVienDTO(nv, hd, bh);
+            return new NhanVienDTO
+            {
+                // Nhân viên
+                MaNV = nv.MaNV,
+                HoTen = nv.HoTen,
+                NgaySinh = nv.NgaySinh,
+                GioiTinh = nv.GioiTinh,
+                CMND = nv.CMND_CCCD,
+                SoDienThoai = nv.SoDienThoai,
+                Email = nv.Email,
+                DiaChi = nv.DiaChi,
+                MaChucVu = nv.MaChucVu,
+                MaPhongBan = nv.MaPhongBan,
+                MaCuaHang = nv.MaCuaHang,
+                LoaiHopDong = nv.LoaiHopDong,
+                TrangThai = nv.TrangThai,
+                NgayBatDau = nv.NgayVaoLam,
+                NgayKetThuc = nv.NgayNghiViec ?? DateTime.MinValue,
+
+                // Hợp đồng
+                MaHopDong = hd?.MaHopDong,
+                LuongCoBan = hd?.LuongCoBan,
+                ThoiHanHD = hd?.ThoiHanHD,
+                NgayKy = hd?.NgayKy ?? DateTime.Now,
+                TrangThaiHopDong = hd?.TrangThai,
+
+                // Bảo hiểm
+                MaBHXH = bh?.SoBHXH,
+                MaBHYT = bh?.SoBHYT,
+                NhaCungCap = bh?.NhaCungCap,
+                NgayCap = bh?.NgayCap ?? DateTime.Now,
+                TrangThaiBaoHiem = bh?.TrangThai
+            };
         }
-
     }
 }

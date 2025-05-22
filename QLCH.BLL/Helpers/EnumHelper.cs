@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QLCH.BLL.Helpers
 {
@@ -25,6 +26,16 @@ namespace QLCH.BLL.Helpers
                     return (T)field.GetValue(null);
             }
             return null;
+        }
+
+        public static void BindEnumToComboBox<TEnum>(ComboBox comboBox) where TEnum : Enum
+        {
+            comboBox.DataSource = Enum.GetValues(typeof(TEnum))
+                .Cast<TEnum>()
+                .Select(e => new KeyValuePair<TEnum, string>(e, EnumHelper.GetDescription(e)))
+                .ToList();
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
         }
     }
 }
