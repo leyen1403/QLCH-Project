@@ -14,12 +14,14 @@ namespace QLCH.BLL.Services
         private readonly NhanVienRepository _nhanVienRepository;
         private readonly HopDongLaoDongRepository _hopDongRepo;
         private readonly BaoHiemRepository _baoHiemRepo;
+        private readonly TaiKhoanService _taiKhoanRepo;
 
         public NhanVienService()
         {
             _nhanVienRepository = new NhanVienRepository();
             _hopDongRepo = new HopDongLaoDongRepository();
             _baoHiemRepo = new BaoHiemRepository();
+            _taiKhoanRepo = new TaiKhoanService();
         }
 
         public List<NhanVien> GetAllNhanViens()
@@ -185,6 +187,14 @@ namespace QLCH.BLL.Services
             _hopDongRepo.Add(hd);
             bh.MaNV = nv.MaNV;
             _baoHiemRepo.Add(bh);
+            // Tạo tài khoản cho nhân viên
+            var tk = new TaiKhoan();
+            tk.MaNV = nv.MaNV;
+            tk.TenDangNhap = nv.MaNV;
+            tk.MatKhau = nv.MaNV;
+            tk.Email = nv.Email;
+            tk.TrangThai = nv.TrangThai;
+            _taiKhoanRepo.Add(tk);
             return true;
         }
 

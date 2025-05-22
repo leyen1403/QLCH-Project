@@ -52,8 +52,10 @@
     <Compile Include="Common\Enums\TrangThaiBaoHiem.cs" />
     <Compile Include="Common\Enums\TrangThaiHopDongLD.cs" />
     <Compile Include="Common\Enums\TrangThaiNhanVien.cs" />
+    <Compile Include="Common\Enums\TrangThaiTaiKhoan.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Interfaces\IBaoCaoTonKhoService.cs" />
     <Compile Include="Interfaces\IBaoHiemService.cs" />

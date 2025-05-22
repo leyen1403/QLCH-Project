@@ -1,4 +1,5 @@
-﻿using QLCH.BLL.Interfaces;
+﻿using QLCH.BLL.Helpers;
+using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
@@ -18,22 +19,12 @@ namespace QLCH.BLL.Services
 
         public TaiKhoan GetById(int id) => _repo.GetById(id);
 
-        private string HashPassword(string password)
-        {
-            using (var sha = System.Security.Cryptography.SHA256.Create())
-            {
-                var bytes = System.Text.Encoding.UTF8.GetBytes(password);
-                var hashBytes = sha.ComputeHash(bytes);
-                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-            }
-        }
-
         public bool Add(TaiKhoan tk)
         {
             try
             {
-                Validate(tk);
-                tk.MatKhau = HashPassword(tk.MatKhau);
+                ValidationHelper.Validate<TaiKhoan>(tk);
+                tk.MatKhau = HashHelper.HashPassword(tk.MatKhau);
                 _repo.Add(tk);
                 return true;
             }
@@ -48,7 +39,7 @@ namespace QLCH.BLL.Services
         {
             try
             {
-                Validate(tk);
+                ValidationHelper.Validate<TaiKhoan>(tk);
                 if (_repo.GetById(tk.MaTaiKhoan) == null)
                     throw new Exception("Tài khoản không tồn tại.");
                 _repo.Update(tk);
@@ -73,68 +64,14 @@ namespace QLCH.BLL.Services
             {
                 throw new Exception($"Lỗi khi xóa tài khoản: {ex.Message}");
             }
-        }
-
-        private void Validate(TaiKhoan tk)
-        {
-            var errors = new List<string>();
-
-            if (string.IsNullOrWhiteSpace(tk.MaNV))
-                errors.Add("Mã nhân viên không được để trống.");
-
-            if (string.IsNullOrWhiteSpace(tk.TenDangNhap))
-                errors.Add("Tên đăng nhập không được để trống.");
-            else
-            {
-                var existing = _repo.GetAll().Find(x => x.TenDangNhap == tk.TenDangNhap);
-                if (existing != null)
-                    errors.Add("Tên đăng nhập đã tồn tại.");
-            }
-
-            if (string.IsNullOrWhiteSpace(tk.MatKhau))
-                errors.Add("Mật khẩu không được để trống.");
-            else if (tk.MatKhau.Length < 6)
-                errors.Add("Mật khẩu phải có ít nhất 6 ký tự.");
-
-            if (string.IsNullOrWhiteSpace(tk.Email))
-                errors.Add("Email không được để trống.");
-            else
-            {
-                if (!tk.Email.Contains("@") || !tk.Email.Contains("."))
-                    errors.Add("Email không đúng định dạng.");
-                else
-                {
-                    var existingEmail = _repo.GetAll().Find(x => x.Email == tk.Email);
-                    if (existingEmail != null)
-                        errors.Add("Email đã tồn tại.");
-                }
-            }
-
-            if (!string.IsNullOrEmpty(tk.TrangThai) &&
-                tk.TrangThai != "Hoạt động" &&
-                tk.TrangThai != "Đã khóa" &&
-                tk.TrangThai != "Tạm ngừng")
-                errors.Add("Trạng thái không hợp lệ.");
-
-            if (string.IsNullOrWhiteSpace(tk.MaNV))
-            {
-                errors.Add("Mã nhân viên không được để trống.");
-            }
-            else if (!_nhanVienRepo.Exists(tk.MaNV))
-            {
-                errors.Add("Mã nhân viên không tồn tại trong hệ thống.");
-            }
-
-            if (errors.Count > 0)
-                throw new Exception(string.Join("\n", errors));
-        }
+        }        
 
         public TaiKhoan Login(string username, string password)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 throw new Exception("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.");
 
-            string hashedPassword = HashPassword(password);
+            string hashedPassword = HashHelper.HashPassword(password);
 
             var account = _repo.GetAll()
                                .Find(x => x.TenDangNhap == username && x.MatKhau == hashedPassword);
@@ -157,7 +94,7 @@ namespace QLCH.BLL.Services
             if (acc == null)
                 throw new Exception("Tài khoản không tồn tại.");
 
-            acc.MatKhau = HashPassword(newPassword);
+            acc.MatKhau = HashHelper.HashPassword(newPassword);
             _repo.Update(acc);
             return true;
         }

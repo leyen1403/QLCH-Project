@@ -80,7 +80,7 @@ namespace QLCH.DAL.Repositorys
             ExecuteNonQuery(@"INSERT INTO TaiKhoan (MaNV, TenDangNhap, MatKhau, Email, TrangThai) 
                               VALUES (@MaNV, @TenDangNhap, @MatKhau, @Email, @TrangThai)", cmd =>
             {
-                cmd.Parameters.AddWithValue("@MaNV", tk.MaNV);
+                cmd.Parameters.AddWithValue("@MaNV", tk.MaNV == null ? (object)DBNull.Value : tk.MaNV);
                 cmd.Parameters.AddWithValue("@TenDangNhap", tk.TenDangNhap);
                 cmd.Parameters.AddWithValue("@MatKhau", tk.MatKhau);
                 cmd.Parameters.AddWithValue("@Email", tk.Email);
