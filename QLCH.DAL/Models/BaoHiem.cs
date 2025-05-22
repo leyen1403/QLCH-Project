@@ -9,7 +9,7 @@ namespace QLCH.DAL.Models
 {
     public class BaoHiem
     {
-        [Required(ErrorMessage = "Mã bảo hiểm là bắt buộc")]
+        [Range(1, int.MaxValue, ErrorMessage = "Mã bảo hiểm không hợp lệ")]
         public int MaBaoHiem { get; set; }
 
         [Required(ErrorMessage = "Mã nhân viên là bắt buộc")]

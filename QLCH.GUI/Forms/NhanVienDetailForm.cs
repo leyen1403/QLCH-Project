@@ -154,9 +154,9 @@ namespace QLCH.GUI.Forms
                 nv.SoDienThoai = txtSdt.Text;
                 nv.Email = txtEmail.Text;
                 nv.DiaChi = txtDiaChi.Text;
-                nv.MaChucVu = Convert.ToInt32(cmbChucVu.SelectedValue);
-                nv.MaPhongBan = Convert.ToInt32(cmbPhongBan.SelectedValue);
-                nv.MaCuaHang = Convert.ToInt32(cmbCuaHang.SelectedValue);
+                nv.MaChucVu = cmbChucVu.Text == "" ? 0 : Convert.ToInt32(cmbChucVu.SelectedValue);
+                nv.MaPhongBan = cmbPhongBan.Text == "" ? 0 : Convert.ToInt32(cmbPhongBan.SelectedValue);
+                nv.MaCuaHang = cmbCuaHang.Text == "" ? 0 : Convert.ToInt32(cmbCuaHang.SelectedValue);
                 nv.LoaiHopDong = cmbLoaiHopDong.Text;
                 nv.TrangThai = cmbTrangThaiLamViec.Text;
                 nv.NgayVaoLam = dtpNgayVaoLam.Value;
@@ -189,10 +189,10 @@ namespace QLCH.GUI.Forms
                 }
                 else if (_mode == FormMode.Update)
                 {
-                    hd.MaHopDong = Convert.ToInt32(txtMaHopDong.Text);
-                    bh.MaBaoHiem = Convert.ToInt32(txtMaBaoHiem.Text);
-                    hd.LuongCoBan = Convert.ToDecimal(txtLuongCoBan.Text);
-                    hd.ThoiHanHD = Convert.ToInt32(txtThoiHan.Text);
+                    hd.MaHopDong = txtMaHopDong.Text == "" ? 0 : Convert.ToInt32(txtMaHopDong.Text);
+                    bh.MaBaoHiem = txtMaBaoHiem.Text == "" ? 0 : Convert.ToInt32(txtMaBaoHiem.Text);
+                    hd.LuongCoBan = txtLuongCoBan.Text == "" ? 0 : Convert.ToDecimal(txtLuongCoBan.Text);
+                    hd.ThoiHanHD = txtThoiHan.Text == "" ? 0 : Convert.ToInt32(txtThoiHan.Text);
                     _nhanVienSer.UpdateNhanVienFull(nv, hd, bh);
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
