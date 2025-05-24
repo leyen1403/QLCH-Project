@@ -20,7 +20,8 @@ namespace QLCH.GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SystemInitializer.EnsureAdminAccount();
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
+            Application.Run(new NhanVienManagerForm());
             //Application.Run(new NhanVienDetailForm(FormMode.Insert));
             //Application.Run(new NhanVienDetailForm(FormMode.Update, "NV0002"));
         }

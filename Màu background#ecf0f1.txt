@@ -1,0 +1,3 @@
+Màu background:#ecf0f1
+Màu chữ:DarkBlue
+Màu background pannel:White
