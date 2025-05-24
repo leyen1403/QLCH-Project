@@ -28,42 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.ListNhanVienGirdView = new QLCH.GUI.Custom.CustomGirdView();
-            this.customLabel4 = new QLCH.GUI.Custom.CustomLabel();
-            this.customLabel5 = new QLCH.GUI.Custom.CustomLabel();
-            this.customLabel6 = new QLCH.GUI.Custom.CustomLabel();
-            this.customLabel3 = new QLCH.GUI.Custom.CustomLabel();
-            this.customLabel2 = new QLCH.GUI.Custom.CustomLabel();
-            this.customLabel1 = new QLCH.GUI.Custom.CustomLabel();
             this.customTitle1 = new QLCH.GUI.Custom.CustomTitle();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.customLabel4 = new QLCH.GUI.Custom.CustomLabel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.customLabel5 = new QLCH.GUI.Custom.CustomLabel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.customLabel6 = new QLCH.GUI.Custom.CustomLabel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.customLabel3 = new QLCH.GUI.Custom.CustomLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.customLabel2 = new QLCH.GUI.Custom.CustomLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.customLabel1 = new QLCH.GUI.Custom.CustomLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ListNhanVienGirdView = new QLCH.GUI.Custom.CustomGirdView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.customLabel7 = new QLCH.GUI.Custom.CustomLabel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListNhanVienGirdView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +91,18 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // customTitle1
+            // 
+            this.customTitle1.AutoSize = true;
+            this.customTitle1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.customTitle1.ForeColor = System.Drawing.Color.DarkBlue;
+            this.customTitle1.Location = new System.Drawing.Point(86, 23);
+            this.customTitle1.Name = "customTitle1";
+            this.customTitle1.Size = new System.Drawing.Size(368, 46);
+            this.customTitle1.TabIndex = 0;
+            this.customTitle1.Text = "QUẢN LÝ NHÂN VIÊN";
+            this.customTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -100,20 +115,54 @@
             this.panel2.Size = new System.Drawing.Size(1382, 182);
             this.panel2.TabIndex = 1;
             // 
-            // panel3
+            // groupBox2
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.ListNhanVienGirdView);
-            this.panel3.Location = new System.Drawing.Point(0, 279);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1382, 674);
-            this.panel3.TabIndex = 2;
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(28, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(217, 156);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Lọc nâng cao";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(20, 98);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(94, 24);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Thử việc";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(20, 62);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(123, 24);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "Đã nghỉ việc";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(20, 28);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 24);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Đang làm việc";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.customLabel7);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button1);
@@ -138,107 +187,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm thông tin nhân viên";
             // 
-            // label1
+            // comboBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
-            this.label1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(376, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 27);
-            this.textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(376, 58);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 27);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(376, 92);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(236, 27);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(847, 89);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(236, 27);
-            this.textBox4.TabIndex = 12;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(847, 55);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(236, 27);
-            this.textBox5.TabIndex = 10;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(847, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(236, 27);
-            this.textBox6.TabIndex = 8;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(28, 16);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(217, 156);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Lọc nâng cao";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1007, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 29);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Tìm";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(20, 28);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(137, 24);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Đang làm việc";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(20, 62);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(123, 24);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Đã nghỉ việc";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(20, 98);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(94, 24);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Thử việc";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(25, 62);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(160, 28);
+            this.comboBox2.TabIndex = 15;
             // 
             // comboBox1
             // 
@@ -248,55 +203,21 @@
             this.comboBox1.Size = new System.Drawing.Size(157, 28);
             this.comboBox1.TabIndex = 14;
             // 
-            // comboBox2
+            // button1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(25, 62);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 28);
-            this.comboBox2.TabIndex = 15;
+            this.button1.Location = new System.Drawing.Point(1007, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(76, 29);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Thêm";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // ListNhanVienGirdView
+            // textBox4
             // 
-            this.ListNhanVienGirdView.AllowUserToAddRows = false;
-            this.ListNhanVienGirdView.AllowUserToDeleteRows = false;
-            this.ListNhanVienGirdView.AllowUserToResizeColumns = false;
-            this.ListNhanVienGirdView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ListNhanVienGirdView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ListNhanVienGirdView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ListNhanVienGirdView.BackgroundColor = System.Drawing.Color.White;
-            this.ListNhanVienGirdView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListNhanVienGirdView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ListNhanVienGirdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListNhanVienGirdView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ListNhanVienGirdView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListNhanVienGirdView.EnableHeadersVisualStyles = false;
-            this.ListNhanVienGirdView.Location = new System.Drawing.Point(0, 0);
-            this.ListNhanVienGirdView.Name = "ListNhanVienGirdView";
-            this.ListNhanVienGirdView.RowHeadersVisible = false;
-            this.ListNhanVienGirdView.RowHeadersWidth = 51;
-            this.ListNhanVienGirdView.RowTemplate.Height = 24;
-            this.ListNhanVienGirdView.Size = new System.Drawing.Size(1382, 674);
-            this.ListNhanVienGirdView.TabIndex = 0;
+            this.textBox4.Location = new System.Drawing.Point(847, 89);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(236, 27);
+            this.textBox4.TabIndex = 12;
             // 
             // customLabel4
             // 
@@ -309,6 +230,13 @@
             this.customLabel4.TabIndex = 11;
             this.customLabel4.Text = "CCCD";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(847, 55);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(236, 27);
+            this.textBox5.TabIndex = 10;
+            // 
             // customLabel5
             // 
             this.customLabel5.AutoSize = true;
@@ -319,6 +247,13 @@
             this.customLabel5.Size = new System.Drawing.Size(71, 28);
             this.customLabel5.TabIndex = 9;
             this.customLabel5.Text = "Địa chỉ";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(847, 22);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(236, 27);
+            this.textBox6.TabIndex = 8;
             // 
             // customLabel6
             // 
@@ -331,6 +266,13 @@
             this.customLabel6.TabIndex = 7;
             this.customLabel6.Text = "Số điện thoại";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(376, 92);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(236, 27);
+            this.textBox3.TabIndex = 6;
+            // 
             // customLabel3
             // 
             this.customLabel3.AutoSize = true;
@@ -341,6 +283,13 @@
             this.customLabel3.Size = new System.Drawing.Size(59, 28);
             this.customLabel3.TabIndex = 5;
             this.customLabel3.Text = "Email";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(376, 58);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(236, 27);
+            this.textBox2.TabIndex = 4;
             // 
             // customLabel2
             // 
@@ -353,6 +302,13 @@
             this.customLabel2.TabIndex = 3;
             this.customLabel2.Text = "Họ Tên";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(376, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(236, 27);
+            this.textBox1.TabIndex = 2;
+            // 
             // customLabel1
             // 
             this.customLabel1.AutoSize = true;
@@ -364,17 +320,96 @@
             this.customLabel1.TabIndex = 1;
             this.customLabel1.Text = "Mã nhân viên";
             // 
-            // customTitle1
+            // label1
             // 
-            this.customTitle1.AutoSize = true;
-            this.customTitle1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.customTitle1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.customTitle1.Location = new System.Drawing.Point(86, 23);
-            this.customTitle1.Name = "customTitle1";
-            this.customTitle1.Size = new System.Drawing.Size(368, 46);
-            this.customTitle1.TabIndex = 0;
-            this.customTitle1.Text = "QUẢN LÝ NHÂN VIÊN";
-            this.customTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.ListNhanVienGirdView);
+            this.panel3.Location = new System.Drawing.Point(0, 279);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1382, 674);
+            this.panel3.TabIndex = 2;
+            // 
+            // ListNhanVienGirdView
+            // 
+            this.ListNhanVienGirdView.AllowUserToAddRows = false;
+            this.ListNhanVienGirdView.AllowUserToDeleteRows = false;
+            this.ListNhanVienGirdView.AllowUserToResizeColumns = false;
+            this.ListNhanVienGirdView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.ListNhanVienGirdView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ListNhanVienGirdView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ListNhanVienGirdView.BackgroundColor = System.Drawing.Color.White;
+            this.ListNhanVienGirdView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListNhanVienGirdView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.ListNhanVienGirdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListNhanVienGirdView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ListNhanVienGirdView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListNhanVienGirdView.EnableHeadersVisualStyles = false;
+            this.ListNhanVienGirdView.Location = new System.Drawing.Point(0, 0);
+            this.ListNhanVienGirdView.Name = "ListNhanVienGirdView";
+            this.ListNhanVienGirdView.RowHeadersVisible = false;
+            this.ListNhanVienGirdView.RowHeadersWidth = 51;
+            this.ListNhanVienGirdView.RowTemplate.Height = 24;
+            this.ListNhanVienGirdView.Size = new System.Drawing.Size(1382, 674);
+            this.ListNhanVienGirdView.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(925, 120);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 29);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Tìm";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // customLabel7
+            // 
+            this.customLabel7.AutoSize = true;
+            this.customLabel7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.customLabel7.ForeColor = System.Drawing.Color.DarkBlue;
+            this.customLabel7.Location = new System.Drawing.Point(20, 121);
+            this.customLabel7.Name = "customLabel7";
+            this.customLabel7.Size = new System.Drawing.Size(180, 28);
+            this.customLabel7.TabIndex = 17;
+            this.customLabel7.Text = "Danh sách đã chọn:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(277, 124);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(76, 29);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Xóa";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // NhanVienManagerForm
             // 
@@ -391,11 +426,11 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListNhanVienGirdView)).EndInit();
             this.ResumeLayout(false);
 
@@ -430,5 +465,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button3;
+        private Custom.CustomLabel customLabel7;
+        private System.Windows.Forms.Button button2;
     }
 }
