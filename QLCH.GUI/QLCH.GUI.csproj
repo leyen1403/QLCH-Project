@@ -71,6 +71,12 @@
     <Compile Include="Forms\BanHangForm.Designer.cs">
       <DependentUpon>BanHangForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChucVuDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChucVuDetailForm.Designer.cs">
+      <DependentUpon>ChucVuDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ChucVuManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     <Compile Include="Forms\NhanVienManagerForm.Designer.cs">
       <DependentUpon>NhanVienManagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PhongBanDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PhongBanDetailForm.Designer.cs">
+      <DependentUpon>PhongBanDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PhongBanManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +171,9 @@
     <EmbeddedResource Include="Forms\BanHangForm.resx">
       <DependentUpon>BanHangForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChucVuDetailForm.resx">
+      <DependentUpon>ChucVuDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChucVuManager.resx">
       <DependentUpon>ChucVuManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NhanVienManagerForm.resx">
       <DependentUpon>NhanVienManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PhongBanDetailForm.resx">
+      <DependentUpon>PhongBanDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PhongBanManager.resx">
       <DependentUpon>PhongBanManager.cs</DependentUpon>
