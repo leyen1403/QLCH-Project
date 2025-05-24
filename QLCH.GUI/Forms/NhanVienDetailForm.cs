@@ -38,9 +38,6 @@ namespace QLCH.GUI.Forms
 
         private void NhanVienDetailForm_Load(object sender, EventArgs e)
         {
-            GlobalVariables.g_listChucVu = _chucVuSer.GetAll();
-            GlobalVariables.g_listPhongBan = _phongBanSer.GetAll();
-            GlobalVariables.g_listCuaHang = _cuaHangSer.GetAll();
             InitCombobox();
             if (_mode == FormMode.Insert)
             {

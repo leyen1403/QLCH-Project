@@ -1,5 +1,7 @@
-﻿using QLCH.BLL.Interfaces;
+﻿using QLCH.BLL.Common.Enums;
+using QLCH.BLL.Interfaces;
 using QLCH.BLL.Services;
+using QLCH.DAL;
 using QLCH.DAL.Models;
 using QLCH.GUI.Forms;
 using System;
@@ -19,11 +21,17 @@ namespace QLCH.GUI
     {
         private readonly INhanVienService _nhanVienService;
         private readonly ITaiKhoanService _taiKhoanService;
+        private readonly IChucVuService _chucVuSer;
+        private readonly IPhongBanService _phongBanSer;
+        private readonly ICuaHangService _cuaHangSer;
         public LoginForm()
         {
             InitializeComponent();
             _nhanVienService = new NhanVienService();
             _taiKhoanService = new TaiKhoanService();
+            _chucVuSer = new ChucVuService();
+            _phongBanSer = new PhongBanService();
+            _cuaHangSer = new CuaHangService();
         }
         
         private bool testConnection()
@@ -47,13 +55,25 @@ namespace QLCH.GUI
                 string username = txtUsername.Text;
                 string password = txtPassword.Text;
                 _taiKhoanService.Login(username, password);
-                MainForm mainForm = new MainForm();               
-                mainForm.ShowDialog();
+                initGlobalVariable();
+                Hide();
+                var f = new NhanVienDetailForm(FormMode.Insert);
+                f.ShowDialog();
+                Close();
+                //MainForm mainForm = new MainForm();               
+                //mainForm.ShowDialog();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void initGlobalVariable()
+        {
+            GlobalVariables.g_listChucVu = _chucVuSer.GetAll();
+            GlobalVariables.g_listPhongBan = _phongBanSer.GetAll();
+            GlobalVariables.g_listCuaHang = _cuaHangSer.GetAll();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

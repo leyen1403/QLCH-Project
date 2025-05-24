@@ -1,4 +1,5 @@
 ﻿// CuaHangService.cs
+using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace QLCH.BLL.Services
 {
-    public class CuaHangService
+    public class CuaHangService : ICuaHangService
     {
         private readonly CuaHangRepository _repo = new CuaHangRepository();
 

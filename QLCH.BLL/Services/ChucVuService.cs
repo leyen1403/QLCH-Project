@@ -1,5 +1,6 @@
 ﻿// ChucVuService.cs
 using QLCH.BLL.Helpers;
+using QLCH.BLL.Interfaces;
 using QLCH.DAL.Models;
 using QLCH.DAL.Repositorys;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace QLCH.BLL.Services
 {
-    public class ChucVuService
+    public class ChucVuService : IChucVuService
     {
         private readonly ChucVuRepository _repo = new ChucVuRepository();
 
