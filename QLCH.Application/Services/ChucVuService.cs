@@ -41,7 +41,7 @@ namespace QLCH.Application.Services
             };
         }
 
-        public void Create(ChucVuDto dto)
+        public int Create(ChucVuDto dto)
         {
             var entity = new ChucVu
             {
@@ -49,7 +49,7 @@ namespace QLCH.Application.Services
                 HeSoLuong = dto.HeSoLuong,
                 MoTa = dto.MoTa
             };
-            _repo.Add(entity);
+            return _repo.Add(entity);
         }
 
         public void Update(ChucVuDto dto)

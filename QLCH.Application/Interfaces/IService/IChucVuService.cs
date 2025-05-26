@@ -11,7 +11,7 @@ namespace QLCH.Application.Interfaces.IService
     {
         List<ChucVuDto> GetAll();
         ChucVuDto? GetById(int id);
-        void Create(ChucVuDto dto);
+        int Create(ChucVuDto dto);
         void Update(ChucVuDto dto);
         void Delete(int id);
     }

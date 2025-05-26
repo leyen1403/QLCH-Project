@@ -29,10 +29,11 @@ namespace QLCH.Infrastructure.Repositories
             return _context.ChucVus.AsNoTracking().FirstOrDefault(c => c.MaChucVu == id);
         }
 
-        public void Add(ChucVu cv)
+        public int Add(ChucVu cv)
         {
             _context.ChucVus.Add(cv);
             _context.SaveChanges();
+            return cv.MaChucVu;
         }
 
         public void Update(ChucVu cv)

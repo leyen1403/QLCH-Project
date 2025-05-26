@@ -56,17 +56,10 @@ namespace QLCH.Presentation.Controllers
         [HttpPost("Create")]
         public ActionResult Create([FromBody] ChucVuDto dto)
         {
-            try
-            {
-                _chucVuService.Create(dto);
-                return Ok(new { message = "Thêm thành công." });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Lỗi khi thêm chức vụ.");
-                return StatusCode(500, "Đã xảy ra lỗi khi thêm.");
-            }
+            var id = _chucVuService.Create(dto);
+            return CreatedAtAction(nameof(GetById), new { id }, new { message = "Thêm thành công.", id });
         }
+
 
         /// <summary>Cập nhật chức vụ</summary>
         [HttpPut("{id}")]

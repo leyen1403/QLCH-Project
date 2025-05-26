@@ -11,7 +11,7 @@ namespace QLCH.Application.Interfaces.IRepositories
     {
         List<ChucVu> GetAll();
         ChucVu? GetById(int id);
-        void Add(ChucVu cv);
+        int Add(ChucVu cv);
         void Update(ChucVu cv);
         void Delete(int id);
     }
