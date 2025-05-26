@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLCH.Application
+namespace QLCH.Application.DTOs
 {
     public class ChucVuDto
     {

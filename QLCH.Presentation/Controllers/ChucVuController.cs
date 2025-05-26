@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QLCH.Application.Interfaces.IService;
 using Microsoft.Extensions.Logging;
-using QLCH.Application;
+using QLCH.Application.DTOs;
 
 namespace QLCH.Presentation.Controllers
 {

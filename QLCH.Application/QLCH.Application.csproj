@@ -10,4 +10,10 @@
     <ProjectReference Include="..\QLCH.Domain\QLCH.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+    <Folder Include="Results\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 </Project>
