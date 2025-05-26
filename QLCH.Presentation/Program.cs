@@ -1,16 +1,24 @@
-using Microsoft.EntityFrameworkCore; // Add this using directive for 'UseSqlServer' extension method
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using QLCH.Application.Interfaces.IRepositories;
 using QLCH.Application.Interfaces.IService;
 using QLCH.Application.Services;
+using QLCH.Application.Validators;
 using QLCH.Infrastructure.Persistence;
 using QLCH.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssemblyContaining<ChucVuDtoValidator>();
+});
+
 builder.Services.AddDbContext<QLCHDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddScoped<IChucVuRepository, ChucVuRepository>();
 builder.Services.AddScoped<IChucVuService, ChucVuService>();
 

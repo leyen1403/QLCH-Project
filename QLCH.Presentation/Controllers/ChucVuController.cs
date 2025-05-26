@@ -53,7 +53,7 @@ namespace QLCH.Presentation.Controllers
         }
 
         /// <summary>Thêm chức vụ mới</summary>
-        [HttpPost]
+        [HttpPost("Create")]
         public ActionResult Create([FromBody] ChucVuDto dto)
         {
             try
