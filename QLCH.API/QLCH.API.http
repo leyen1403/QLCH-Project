@@ -1,0 +1,6 @@
+@QLCH.API_HostAddress = http://localhost:5196
+
+GET {{QLCH.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
