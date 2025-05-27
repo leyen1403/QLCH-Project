@@ -18,7 +18,6 @@ namespace QLCH.GUI.Forms
     public partial class ChucVuManager: Form
     {
         private readonly ApiService _api = new ApiService();
-        private Timer refreshTimer;
         public ChucVuManager()
         {
             InitializeComponent();
@@ -31,22 +30,12 @@ namespace QLCH.GUI.Forms
                 try
                 {
                     await LoadDataAsync();
-
-                    refreshTimer = new Timer();
-                    refreshTimer.Interval = 5000; // 5 giây
-                    refreshTimer.Tick += RefreshTimer_Tick;
-                    refreshTimer.Start();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Lỗi: {ex.Message}");
                 }
             }
-        }
-
-        private async void RefreshTimer_Tick(object sender, EventArgs e)
-        {
-            await LoadDataAsync();
         }
 
         private async void btnThem_Click(object sender, EventArgs e)
