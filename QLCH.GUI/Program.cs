@@ -3,6 +3,7 @@ using QLCH.DAL;
 using QLCH.GUI.Forms;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace QLCH.GUI
             Application.SetCompatibleTextRenderingDefault(false);
             //SystemInitializer.EnsureAdminAccount();
             //Application.Run(new LoginForm());
-            //Application.Run(new NhanVienManagerForm());
+            //Application.Run(new NhanVienManagerForm());            
             Application.Run(new ChucVuManager());
             //Application.Run(new NhanVienDetailForm(FormMode.Insert));
             //Application.Run(new NhanVienDetailForm(FormMode.Update, "NV0002"));

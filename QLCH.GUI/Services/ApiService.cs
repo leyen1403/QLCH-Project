@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -14,9 +15,10 @@ namespace QLCH.GUI.Services
 
         public ApiService()
         {
+            var apiBaseAddress = ConfigurationManager.AppSettings["ApiBaseAddress"];
             _client = new HttpClient
             {
-                BaseAddress = new Uri("http://localhost:2025")
+                BaseAddress = new Uri(apiBaseAddress)
             };
         }
 
