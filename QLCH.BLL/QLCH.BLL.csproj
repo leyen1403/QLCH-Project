@@ -53,6 +53,7 @@
     <Compile Include="Common\Enums\TrangThaiHopDongLD.cs" />
     <Compile Include="Common\Enums\TrangThaiNhanVien.cs" />
     <Compile Include="Common\Enums\TrangThaiTaiKhoan.cs" />
+    <Compile Include="DTO\ChucVuDto.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
