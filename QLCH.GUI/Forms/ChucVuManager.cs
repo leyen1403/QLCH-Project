@@ -15,7 +15,7 @@ using QLCH.GUI.Services;
 
 namespace QLCH.GUI.Forms
 {
-    public partial class ChucVuManager: Form
+    public partial class ChucVuManager : Form
     {
         private readonly ApiService _api = new ApiService();
         public ChucVuManager()
@@ -40,10 +40,10 @@ namespace QLCH.GUI.Forms
 
         private async void btnThem_Click(object sender, EventArgs e)
         {
-            using(ChucVuDetailForm form = new ChucVuDetailForm())
+            using (ChucVuDetailForm form = new ChucVuDetailForm())
             {
                 var result = form.ShowDialog();
-                if(result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     await LoadDataAsync();
                 }
@@ -55,5 +55,35 @@ namespace QLCH.GUI.Forms
             var list = await _api.GetListAsync<ChucVuDto>("/api/ChucVu");
             dgvListCV.DataSource = list;
         }
+
+        private async void btnXoa_Click(object sender, EventArgs e)
+        {
+            int id = dgvListCV.CurrentRow.Cells[0].Value.ToString() != null ? Convert.ToInt32(dgvListCV.CurrentRow.Cells[0].Value) : 0;
+            if (id == 0)
+            {
+                MessageBox.Show("Vui lòng chọn chức vụ để xóa.");
+                return;
+            }
+            var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa chức vụ này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    var success = await _api.PostAsync($"/api/ChucVu/Delete/{id}");
+                    if (success)
+                    {
+                        await LoadDataAsync();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa chức vụ không thành công. Vui lòng thử lại sau.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+                }
+            }
+        } 
     }
 }

@@ -53,5 +53,12 @@ namespace QLCH.GUI.Services
             var response = await _client.PostAsync(endpoint, content);
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<bool> PostAsync(string endpoint)
+        {
+            var response = await _client.PostAsync(endpoint, null);
+            return response.IsSuccessStatusCode;
+        }
     }
 }
+// 

@@ -62,7 +62,7 @@ namespace QLCH.Presentation.Controllers
 
 
         /// <summary>Cập nhật chức vụ</summary>
-        [HttpPut("{id}")]
+        [HttpPost("Update/{id}")]
         public ActionResult Update(int id, [FromBody] ChucVuDto dto)
         {
             try
@@ -82,7 +82,7 @@ namespace QLCH.Presentation.Controllers
         }
 
         /// <summary>Xóa chức vụ</summary>
-        [HttpDelete("{id}")]
+        [HttpPost("Delete/{id}")]
         public ActionResult Delete(int id)
         {
             try
