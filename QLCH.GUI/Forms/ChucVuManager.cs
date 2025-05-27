@@ -18,6 +18,7 @@ namespace QLCH.GUI.Forms
     public partial class ChucVuManager: Form
     {
         private readonly ApiService _api = new ApiService();
+        private Timer refreshTimer;
         public ChucVuManager()
         {
             InitializeComponent();
@@ -29,12 +30,12 @@ namespace QLCH.GUI.Forms
             {
                 try
                 {
-                    var list = await _api.GetListAsync<ChucVuDto>("/api/ChucVu");
+                    await LoadDataAsync();
 
-                    g_list1.Columns.Clear();
-                    g_list1.AutoGenerateColumns = true;
-                    g_list1.DataSource = list;
-
+                    refreshTimer = new Timer();
+                    refreshTimer.Interval = 5000; // 5 giây
+                    refreshTimer.Tick += RefreshTimer_Tick;
+                    refreshTimer.Start();
                 }
                 catch (Exception ex)
                 {
@@ -43,5 +44,27 @@ namespace QLCH.GUI.Forms
             }
         }
 
+        private async void RefreshTimer_Tick(object sender, EventArgs e)
+        {
+            await LoadDataAsync();
+        }
+
+        private async void btnThem_Click(object sender, EventArgs e)
+        {
+            using(ChucVuDetailForm form = new ChucVuDetailForm())
+            {
+                var result = form.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    await LoadDataAsync();
+                }
+            }
+        }
+
+        private async Task LoadDataAsync()
+        {
+            var list = await _api.GetListAsync<ChucVuDto>("/api/ChucVu");
+            dgvListCV.DataSource = list;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace QLCH.GUI.Services
         {
             _client = new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7173")
+                BaseAddress = new Uri("http://localhost:2025")
             };
         }
 
